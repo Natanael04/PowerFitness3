@@ -24,7 +24,7 @@
 						<!-- Lista de usuarios-->
 
 						<div class="table-responsive">
-							<table id="userList" class="table table-bordered table-hover table-striped">
+							<table id="Tabla" class="table table-bordered table-hover table-striped">
 								<thead class="thead-light">
 								<tr>
 									<th scope="col">#</th>

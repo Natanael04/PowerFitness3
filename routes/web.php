@@ -11,13 +11,14 @@
 |
 */
 
-});
+
 Route::view('/','Home')->name('Home');/*esta te lleva al inicio*/
 
 /*estas rutas agregue shoo*/
 
 Route::get('/login1', function () {
   return view('auth/login1');
+});
 
 Route::get('/Admin', function () {
   return view('Administrador/Admin');
