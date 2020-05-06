@@ -55,7 +55,7 @@ Route::get('/Admin', function () {
 });
 Route::view('/Agregar', 'Agregar')->name('Agregar');
 Route::view('/Pago', 'Pago')->name('Pago');
-Route::view('/Miembros', 'Miembros')->name('Miembros');
+
 
 
 
