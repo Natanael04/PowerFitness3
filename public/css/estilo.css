@@ -18,6 +18,13 @@ a:focus{
 	transition: all 0.3s;
 }
 /* Para el parallax*/
+.container1{
+min-height: auto;
+min-width: auto;
+max-width: auto;
+max-height: auto;
+
+
 .containerParallax{
 	max-width: 960px;
 	margin: 0 auto;

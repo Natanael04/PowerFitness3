@@ -4,7 +4,7 @@
 
 <body class="fondo">
 	
-<div class="container">
+<div class="container1">
 	<div class="mx-auto col-sm-8 main-section" id="myTab" role="tablist">
 		<ul class="nav nav-tabs justify-content-end">
 			<li class="nav-item">
