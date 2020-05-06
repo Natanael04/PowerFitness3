@@ -106,11 +106,14 @@
       
    });
 </script>
-<script >
-  $(document).ready(function() {
-     //Asegurate que el id que le diste a la tabla sea igual al texto despues del simbolo #
-     $('#Tabla').DataTable();
-   });
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('#Tabla').dataTable( {
+            "language": {
+                "url": "https://cdn.datatables.net/plug-ins/1.10.20/i18n/Spanish.json"
+            }
+        } );
+    } );
 </script>
 
 
