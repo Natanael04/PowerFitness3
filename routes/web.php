@@ -19,6 +19,9 @@ Route::view('/','Home')->name('Home');/*esta te lleva al inicio*/
 Route::get('/login1', function () {
   return view('auth/login1');
 });
+Route::get('/totem', function () {
+  return view('/totem');
+});
 
 //Rutas Admin
 Route::get('/Admin', function () {
