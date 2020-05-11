@@ -1,12 +1,16 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\AdminControllers;
 
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Spatie\Permission\Traits\HasRoles;
 use App\User;
 
-class UserController extends Controller
+
+class MiembrosController extends Controller
 {
+    use HasRoles;
     /**
      * Display a listing of the resource.
      *
@@ -14,10 +18,18 @@ class UserController extends Controller
      */
     public function index()
     {
-        $usuarios = User::all();
-        return view('usuarios.index', compact('usuarios'));
+        //
     }
-
+/**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function listar()
+    {
+        $usuarios = User::all();
+        return view('Administrador/Miembros', compact('usuarios'));
+    }
     /**
      * Show the form for creating a new resource.
      *
@@ -79,8 +91,9 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function eliminar($id)
     {
-        //
+            User::findOrFail($id)->delete();
+            return redirect()->back();
     }
 }

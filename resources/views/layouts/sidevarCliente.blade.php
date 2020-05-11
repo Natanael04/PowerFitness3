@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="utf-8">
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
     <link rel="shortcut icon" href="https://www.powerfitness.cl/images/favicon.ico" type="image/x-icon">
     <link rel="icon" href="https://www.powerfitness.cl/images/favicon.ico" type="image/x-icon">
@@ -25,7 +25,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link type="text/css" rel="stylesheet" href="/css/estilo.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-    <script src="/js/parallax.min.js"></script>
+    
     
 </head>
 
@@ -57,10 +57,10 @@
                                 <a class="nav-link" href="{{ route('Escanear') }}">{{ __('Escanear') }}</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('Membresia') }}">{{ __('Membresia') }}</a>
+                                <a class="nav-link" href="#Membresia">{{ __('Membresia') }}</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('Rutinas') }}">{{ __('Rutinas') }}</a>
+                                <a class="nav-link" href="#Rutinas">{{ __('Rutinas') }}</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('login') }}">{{ __('Salir') }}</a>

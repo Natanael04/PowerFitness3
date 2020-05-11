@@ -20,14 +20,18 @@ Route::get('/login1', function () {
   return view('auth/login1');
 });
 
+//Rutas Admin
 Route::get('/Admin', function () {
   return view('Administrador/Admin');
 });
 Route::view('/Agregar', 'Administrador/Agregar')->name('Agregar');
 Route::view('/Pago', 'Administrador/Pago')->name('Pago');
-Route::view('/Miembros', 'Administrador/Miembros')->name('Miembros');
+Route::get('/Miembros', 'AdminControllers\MiembrosController@listar')->name('Miembros');
+Route::group(['middleware' => ['permission:eliminar-cliente']], function (){
+  Route::get('/Miembros/{id}/eliminar', 'AdminControllers\MiembrosController@eliminar')->name('usuarios.eliminar');
+});
 
-
+//Rutas Cliente
 Route::get('/ClienteH', function () {
   return view('Cliente/ClienteH');
 });
@@ -36,6 +40,7 @@ Route::view('/Escanear', 'Cliente/Escanear')->name('Escanear');
 Route::view('/Membresia', 'Cliente/Membresia')->name('Membresia');
 Route::view('/Rutinas', 'Cliente/Rutinas')->name('Rutinas');
 
+//Rutas Entrenador
 Route::get('/EntrenadorH', function () {
   return view('Entrenador/EntrenadorH');
 });
@@ -48,7 +53,7 @@ Route::view('/CRutina', 'Entrenador/CRutina')->name('CRutina');
 
 
 
-
+//Testeo rutas
 
 Route::get('/Admin', function () {
   return view('Admin');
@@ -64,3 +69,4 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::post('Agregar','AgregarController@store');
+//Route::get('/Miembros', 'UserController@index');

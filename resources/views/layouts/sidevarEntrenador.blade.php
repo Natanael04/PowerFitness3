@@ -14,8 +14,15 @@
     <meta property="og:url" content="https://www.powerfitness.cl">
     <meta property="fb:admins" content="powerfitnesscoyhaique">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-     
-   
+      <!--JQuery-->
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <!--Data Table-->  
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
+  
+    <script type="text/javascript" charset="utf8" src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+    
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -26,6 +33,45 @@
     
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link type="text/css" rel="stylesheet" href="/css/estilo.css">
+   
+   <!-- Fullcalendar estilos-->
+    <link href='fullcalendar/core/main.css' rel='stylesheet' />
+    <link href='fullcalendar/daygrid/main.css' rel='stylesheet' />
+    <link href='fullcalendar/timegrid/main.css' rel='stylesheet' />
+    <link href='fullcalendar/list/main.css' rel='stylesheet' />
+   <!-- Fullcalendar plugins-->
+    <script src='fullcalendar/core/main.js'></script>
+    <script src='fullcalendar/daygrid/main.js'></script>
+    <script src='fullcalendar/timegrid/main.js'></script>
+    <script src='fullcalendar/list/main.js'></script>
+    <script src='fullcalendar/interaction/main.js'></script>
+    <script>
+
+      document.addEventListener('DOMContentLoaded', function() {
+        var calendarEl = document.getElementById('calendar');
+
+        var calendar = new FullCalendar.Calendar(calendarEl, {
+
+
+          plugins: [ 'dayGrid', 'interaction' , 'timeGrid', 'list' ],
+
+          header:{
+            left:'prev,next today',
+            center:'title',
+            right:'dayGridMonth,timeGridWeek,timeGridDay'
+          },
+          dateClick:function(info){
+             $('#exampleModal').modal();
+             calendar.addEvent({});
+          }
+        });
+        calendar.setOption('locale','Es');
+
+        calendar.render();
+      });
+
+    </script>
+  
     
 </head>
 
@@ -51,13 +97,13 @@
                     
                    
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('Agendar') }}">{{ __('Agendar') }}</a>
+                                <a class="nav-link" href="#Agendar">{{ __('Agendar') }}</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('CDieta') }}">{{ __('CDieta') }}</a>
+                                <a class="nav-link" href="#Dieta">{{ __('CDieta') }}</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('CRutina') }}">{{ __('CRutina') }}</a>
+                                <a class="nav-link" href="#Rutina">{{ __('CRutina') }}</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('login') }}">{{ __('Salir') }}</a>
@@ -89,10 +135,8 @@
     </div>
 
 
+  
 
-
-
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
   </body>
@@ -105,6 +149,15 @@
       });
       
    });
+</script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('#TablaEntrenador').dataTable( {
+            "language": {
+                "url": "https://cdn.datatables.net/plug-ins/1.10.20/i18n/Spanish.json"
+            }
+        } );
+    } );
 </script>
 
 

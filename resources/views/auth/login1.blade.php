@@ -6,34 +6,52 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title></title>
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+	<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,700&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/ionicons@4.5.10-0/dist/css/ionicons.min.css" rel="stylesheet">
 	<link type="text/css" rel="stylesheet" href="/css/estilo.css">
 </head>
 <body class="bodylogin">
-	<div class="container">
-		<div class="row justify-content-center pt-5 mt-5 m1">
-			<div class="col-md-6 col-sm-8 col-xl-4 col-lg-5 formulario">
-				<form action="POST">
-				<div class="form-group text-center pt-3">
-					<h1 class="text-light">Iniciar Sesion</h1>
-				</div>
-				<div class="form-group mx-sm-4 pt-3">
-					<input type="text" class="form-control" placeholder="Ingrese Rut">
-				</div>
-				<div class="form-group mx-sm-4 pb-3">
-					<input type="text" class="form-control" placeholder="Ingrese su contraseña">
-				</div>
-				<div class="form-group mx-sm-4 pb-3">
-					<input type="submit" class="btn btn-block ingresar" value="Ingresar">
-				</div>
-				<div class="form-group mx-sm-4 text-right">
-					<span class=""><a href="#" class="olvide">Recuperar contraseña?</a></span>
-				</div>
-			</form>
-			</div>
-		</div>
-	</div>
+	<section class="contact-box">
+       <div class="row no-gutters bg-dark">
+           <div class="col-xl-5 col-lg-12 register-bg">
+            <div class="position-absolute testiomonial p-4">
+                <h3 class="font-weight-bold text-light">El Dolor</h3>
+                <p class="lead text-light">de hoy mañana será</p>
+                <h3 class="font-weight-bold text-light">Tu Fuerza</h3>
+            </div>
+           </div>
+           <div class="col-xl-7 col-lg-12 d-flex">
+                <div class="container align-self-center p-6">
+                    <h1 class="font-weight-bold mb-3">PowerFitness</h1>
+                    <div class="form-group">
+                        <button class="btn1 btn-outline-dark d-inline-block text-light mr-2 mb-3 width-100"><i class="icon ion-logo-google lead align-middle mr-2"></i> Google </button>
+                        <button class="btn1 btn-outline-dark d-inline-block text-light mb-3 width-100"><i class="icon ion-logo-facebook lead align-middle mr-2"></i> Facebook</button>
+                    </div>
+                    <p class="text-muted mb-5">Ingresa la siguiente información para Ingresar.</p>
 
-
+                    <form>
+                       
+                        <div class="form-group mb-3">
+                            <label class="font-weight-bold">Correo electrónico <span class="text-danger">*</span></label>
+                            <input type="email" class="form-control" placeholder="Ingresa tu correo electrónico">
+                        </div>
+                        <div class="form-group mb-3">
+                            <label class="font-weight-bold">Contraseña <span class="text-danger">*</span></label>
+                            <input type="password" class="form-control" placeholder="Ingresa una contraseña">
+                        </div>
+                        <div class="form-group mb-5">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox">
+                                <label class="form-check-label text-muted">Al seleccionar esta casilla aceptas nuestro aviso de privacidad y los términos y condiciones</label>
+                            </div>
+                        </div>
+                        <button class=" btn1 btn-outline-dark d-inline-block text-light mr-2 mb-3 width-100">Ingresar</button>
+                    </form>
+                    <small class="d-inline-block text-muted mt-5">Todos los derechos reservados | © 2019 PowerFitness</small>
+                </div>
+           </div>
+       </div>
+   </section>
 
 
 

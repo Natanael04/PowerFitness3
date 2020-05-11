@@ -15,14 +15,20 @@
            </thead>
            <tbody>
                @foreach ($usuarios as $usuario)
-                   <tr></tr>
-                   <tr></tr>
-                   <tr></tr>
-                   <tr></tr>
-                   <tr></tr>
-                   <tr></tr>
-                   <tr></tr>
-
+               <tr>
+                <td>{{ $usuario->id }}</td>
+                <td>{{ $usuario->rut }}</td>
+                <td>{{ $usuario->name }}</td>
+                <td>{{ $usuario->apellido }}</td>
+                <td>{{ $usuario->email }}</td>
+                <td>
+                    @can('eliminar-cliente')
+                        <a href="{{ route('usuarios.eliminar', $usuario->id)}}">Eliminar usuario</a>
+                    @else
+                        Usted no puede realizar esta acción
+                    @endcan
+                </td>
+            </tr>
                @endforeach
            </tbody>
        </table>

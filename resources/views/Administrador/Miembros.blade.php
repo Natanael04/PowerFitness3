@@ -27,16 +27,34 @@
 							<table id="Tabla" class="table table-bordered table-hover table-striped">
 								<thead class="thead-light">
 								<tr>
-									<th scope="col">#</th>
+									<th scope="col">ID</th>
+									<th scope="col">Rut</th>
 									<th scope="col">Nombre</th>
 									<th scope="col">Apellido</th>
 									<th scope="col">Email</th>
-									<th scope="col">Seccion</th>
-									<th></th>
+									<th scope="col">Accion</th>
 								</tr>
 								</thead>
 								<tbody>
-								<tr>
+									
+									@foreach ($usuarios as $usuario)
+									<tr>
+									 <td>{{ $usuario->id }}</td>
+									 <td>{{ $usuario->rut }}</td>
+									 <td>{{ $usuario->name }}</td>
+									 <td>{{ $usuario->apellido }}</td>
+									 <td>{{ $usuario->email }}</td>
+									 <td>
+										 @can('eliminar-cliente')
+											 <a href="{{ route('usuarios.eliminar', $usuario->id)}}"><i class="fas fa-user-times"></i></a>
+										 @else
+											 Usted no puede realizar esta acción
+										 @endcan
+									 </td>
+								 </tr>
+									@endforeach
+
+								{{-- <tr>
 									<th scope="row">1</th>
 									<td>Marduk</td>
 									<td>Henríquez</td>
@@ -45,17 +63,7 @@
 									<td>
 										<a href="#"><i class="fas fa-edit"></i></a> | <a href="#"><i class="fas fa-user-times"></i></a>
 									</td>
-								</tr>
-								<tr>
-									<th scope="row">2</th>
-									<td>vicente</td>
-									<td>Henríquez</td>
-									<td>elpixasldlas@gmail.com</td>
-									<td>zumba</td>
-									<td>
-										<a href="#"><i class="fas fa-edit"></i></a> | <a href="#"><i class="fas fa-user-times"></i></a>
-									</td>
-								</tr>
+								</tr> --}}
 								</tbody>
 							</table>
 						</div>
