@@ -57,15 +57,13 @@
                 <li class="active">
                     
                    
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('Pago') }}">{{ __('Pagos') }}</a>
-                            </li>
+                            
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('Miembros') }}">{{ __('Miembros') }}</a>
                             </li>
-                            <li class="nav-item">
+                            {{-- <li class="nav-item">
                                 <a class="nav-link" href="{{ route('Agregar') }}">{{ __('Agregar') }}</a>
-                            </li>
+                            </li> --}}
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('login') }}">{{ __('Salir') }}</a>
                             </li>

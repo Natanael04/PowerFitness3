@@ -1,1 +1,0 @@
-CRutina.blade.php

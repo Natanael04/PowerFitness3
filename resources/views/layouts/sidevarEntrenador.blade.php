@@ -99,12 +99,7 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="#Agendar">{{ __('Agendar') }}</a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#Dieta">{{ __('CDieta') }}</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#Rutina">{{ __('CRutina') }}</a>
-                            </li>
+                            
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('login') }}">{{ __('Salir') }}</a>
                             </li>

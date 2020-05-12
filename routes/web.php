@@ -22,13 +22,13 @@ Route::get('/login1', function () {
 Route::get('/totem', function () {
   return view('/totem');
 });
+Route::view('/resultado', '/resultado')->name('resultado');
 
 //Rutas Admin
 Route::get('/Admin', function () {
   return view('Administrador/Admin');
 });
 Route::view('/Agregar', 'Administrador/Agregar')->name('Agregar');
-Route::view('/Pago', 'Administrador/Pago')->name('Pago');
 Route::get('/Miembros', 'AdminControllers\MiembrosController@listar')->name('Miembros');
 Route::group(['middleware' => ['permission:eliminar-cliente']], function (){
   Route::get('/Miembros/{id}/eliminar', 'AdminControllers\MiembrosController@eliminar')->name('usuarios.eliminar');
@@ -49,8 +49,8 @@ Route::get('/EntrenadorH', function () {
 });
 
 Route::view('/Agendar', 'Entrenador/Agendar')->name('Agendar');
-Route::view('/CDieta', 'Entrenador/CDieta')->name('CDieta');
-Route::view('/CRutina', 'Entrenador/CRutina')->name('CRutina');
+Route::view('/CDieta', 'Entrenador/CDieta')->name('Dietas');
+Route::view('/CRutina', 'Entrenador/CRutina')->name('Rutinas');
 
 /* hasta aca jajajajja*/
 
@@ -61,7 +61,7 @@ Route::view('/CRutina', 'Entrenador/CRutina')->name('CRutina');
 Route::get('/Admin', function () {
   return view('Admin');
 });
-Route::view('/Agregar', 'Agregar')->name('Agregar');
+
 Route::view('/Pago', 'Pago')->name('Pago');
 
 

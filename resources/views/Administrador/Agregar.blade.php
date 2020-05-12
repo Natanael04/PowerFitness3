@@ -1,15 +1,42 @@
 @extends('layouts.nav')
 
 @section('content')
+<body>
+	<img class="wave" src="img/wave.png">
+	<div class="container">
+		<div class="img">
+			<img src="img/bg.svg">
+		</div>
+		<div class="login-content">
+			<form action="">
+				<img src="img/avatar.svg">
+				<h2 class="title">Welcome</h2>
+           		<div class="input-div one">
+           		   <div class="i">
+           		   		<i class="fas fa-user"></i>
+           		   </div>
+           		   <div class="div">
+           		   		<h5>Username</h5>
+           		   		<input type="text" class="input">
+           		   </div>
+           		</div>
+           		<div class="input-div pass">
+           		   <div class="i"> 
+           		    	<i class="fas fa-lock"></i>
+           		   </div>
+           		   <div class="div">
+           		    	<h5>Password</h5>
+           		    	<input type="password" class="input">
+            	   </div>
+            	</div>
+            	<a href="#">Forgot Password?</a>
+            	<input type="submit" class="btn" value="Login">
+            </form>
+        </div>
+    </div>
+    <script type="text/javascript" src="js/main.js"></script>
+</body>
 
-<form action="POST" action="{{ route('Agregar')}}">
-	@csrf
-	<input type="text" name="rut" placeholder="Ingrese rut">
-	<input type="text" name="nombre" placeholder="Ingrese nombre">
-	<input type="text" name="apellido" placeholder="Ingrese apellido">
-	<input type="email" name="email" placeholder="Email...">
-	<input type="password" name="password" placeholder="Contraseña...">
-	<button>Guardar</button>
-</form>
+
 
 @endsection

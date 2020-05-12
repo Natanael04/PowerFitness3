@@ -23,30 +23,20 @@
            <div class="col-xl-7 col-lg-12 d-flex">
                 <div class="container align-self-center p-6">
                     <h1 class="font-weight-bold mb-3">PowerFitness</h1>
-                    <div class="form-group">
-                        <button class="btn1 btn-outline-dark d-inline-block text-light mr-2 mb-3 width-100"><i class="icon ion-logo-google lead align-middle mr-2"></i> Google </button>
-                        <button class="btn1 btn-outline-dark d-inline-block text-light mb-3 width-100"><i class="icon ion-logo-facebook lead align-middle mr-2"></i> Facebook</button>
-                    </div>
-                    <p class="text-muted mb-5">Ingresa la siguiente información para Ingresar.</p>
+                    
+                    <p class="text-muted mb-5">Estado de tu membresia</p>
 
-                    <form>
+                    
+                        
                        
                         <div class="form-group mb-3">
-                            <label class="font-weight-bold">Rut <span class="text-danger">*</span></label>
-                            <input type="email" class="form-control" placeholder="Ingresa tu Rut">
+                            <label class="font-weight-bold">Es:<span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" >
                         </div>
-                        <div class="form-group mb-3">
-                            <label class="font-weight-bold">Contraseña <span class="text-danger">*</span></label>
-                            <input type="password" class="form-control" placeholder="Ingresa una contraseña">
-                        </div>
-                        <div class="form-group mb-5">
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox">
-                                <label class="form-check-label text-muted">Al seleccionar esta casilla aceptas nuestro aviso de privacidad y los términos y condiciones</label>
-                            </div>
-                        </div>
-                        <button class=" btn1 btn-outline-dark d-inline-block text-light mr-2 mb-3 width-100">Ingresar</button>
-                    </form>
+                        
+                       
+                        <button class=" btn1 btn-outline-dark d-inline-block text-light mr-2 mb-3 width-100">Salir</button>
+                    
                     <small class="d-inline-block text-muted mt-5">Todos los derechos reservados | © 2019 PowerFitness</small>
                 </div>
            </div>

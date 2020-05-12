@@ -32,8 +32,8 @@
                         </div>
                        
                         <div class="form-group mb-3">
-                            <label class="font-weight-bold">Correo electrónico <span class="text-danger">*</span></label>
-                            <input type="email" class="form-control" placeholder="Ingresa tu correo electrónico">
+                            <label class="font-weight-bold">Rut <span class="text-danger">*</span></label>
+                            <input type="email" class="form-control" placeholder="Ingresa tu rut">
                         </div>
                         <div class="form-group mb-3">
                             <label class="font-weight-bold">Contraseña <span class="text-danger">*</span></label>
