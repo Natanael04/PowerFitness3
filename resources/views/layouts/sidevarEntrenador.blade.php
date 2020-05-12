@@ -27,7 +27,7 @@
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
-    <script src="https://kit.fontawesome.com/1ab39e0b26.js" crossorigin="anonymous"></script>
+    <s<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400&display=swap" rel="stylesheet">
 
     <!-- Styles -->
     
@@ -110,17 +110,16 @@
     </nav>
             <div id="content">
                 <nav class="navbar navbar-expand-lg navbar-light">
-                    <div class="container-fluid">
-                        <button type="button" id="sidebarCollapse" class="btn btn-info">
-                            <i class="fas fa-align-left"></i>
-                            <span>Menu</span>
-
-                        </button>
-
-                    </div>
+                        <div class="container-fluid">
+                            <input type="checkbox" id="btn-menu">
+                                        <label for="btn-menu" class="lbl-menu">
+                                            <span id="spn1"></span>
+                                            <span id="spn2"></span>
+                                            <span id="spn3"></span>
+                                        </label>
                     
-
-                </nav>
+                        </div>
+                    </nav>
                 <br><br>
                 
                 @yield('content')
@@ -138,7 +137,7 @@
 
 <script>
    $(document).ready(function(){
-      $("#sidebarCollapse").on('click',function(){
+      $("#btn-menu").on('click',function(){
         $("#sidebar").toggleClass('active');
 
       });

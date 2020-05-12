@@ -2,10 +2,10 @@
 
 @section('content')
 <div id="parallax-image">
-	<div class="row h-100">
-		<div class="col-1-md-12 align-self-center">
-			<h1 class="text-center">Agendar</h1>
-		</div>
+	<div class="">
+		
+			<h1 class="titulo">Horario</h1>
+		
 	</div>
 </div>
 <div class="container1" id="Agendar">
@@ -31,15 +31,47 @@
 	<div id='calendar'></div>
 </div>
 <div id="parallax-image2">
-	<div class="row h-100">
-		<div class="col-1-md-12 align-self-center">
-			<h1 class="text-center">Agendar</h1>
-		</div>
-	</div>
+  <div class="">
+    
+      <h1 class="titulo">Membresia</h1>
+    
+  </div>
 </div>
-<div class="container1"  id="Membresia">
-	<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor dicta blanditiis optio iusto consequatur nobis quo sunt odio aliquid nulla illum earum assumenda dolorum laudantium beatae quod, mollitia autem culpa?Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos quisquam itaque eius accusantium labore! Quae atque consequatur provident commodi dolor molestiae, praesentium id officia quis nesciunt, modi quod dolore possimus.</p>
-	
+<div class="bodylogin">
+	<div class="container1"  id="Membresia">
+	<section class="contact-box">
+       <div class="row no-gutters bg-dark">
+           <div class="col-xl-5 col-lg-12 register-bg">
+            <div class="position-absolute testiomonial p-4">
+                <h3 class="font-weight-bold text-light">El Dolor</h3>
+                <p class="lead text-light">de hoy mañana será</p>
+                <h3 class="font-weight-bold text-light">Tu Fuerza</h3>
+            </div>
+           </div>
+           <div class="col-xl-7 col-lg-12 d-flex">
+                <div class="container align-self-center p-6">
+                    <h1 class="font-weight-bold mb-3">PowerFitness</h1>
+                    
+                    <p class="text-muted mb-5">Estado de tu membresia</p>
+
+                    
+                        
+                       
+                        <div class="form-group mb-3">
+                            <label class="font-weight-bold">Es:<span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" >
+                        </div>
+                        
+                       
+                        <button class=" btn1 btn-outline-dark d-inline-block text-light mr-2 mb-3 width-100">Salir</button>
+                    
+                    <small class="d-inline-block text-muted mt-5">Todos los derechos reservados | © 2019 PowerFitness</small>
+                </div>
+           </div>
+       </div>
+   </section>	
 </div>
+</div>
+
 
 @endsection

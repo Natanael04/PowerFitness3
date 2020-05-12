@@ -17,6 +17,46 @@ a:focus{
 	text-decoration: none;
 	transition: all 0.3s;
 }
+/* Para el boton de menu*/
+
+.lbl-menu{
+	width: 50px;
+	height: 30px;
+	position: relative;
+	cursor: pointer;
+}
+.lbl-menu #spn1,#spn2,#spn3{
+	position: absolute;
+	content: '';
+	background: #ff3751;
+	width: 50px;
+	height: 5px;
+	border-radius: 5px;
+	transition: all 400ms ease;
+}
+#spn2{
+	top: 11px;
+}
+#spn3{
+	top: 22px;
+}
+#btn-menu{
+	display: none;
+}
+#btn-menu:checked ~ .lbl-menu #spn1{
+	transform: rotate(140deg);
+	top: 10px;
+}
+#btn-menu:checked ~ .lbl-menu #spn2{
+	opacity: 0;
+}
+#btn-menu:checked ~ .lbl-menu #spn3{
+	transform: rotate(-140deg);
+	top: 10px;
+}
+
+
+
 /* Para el parallax*/
 #parallax-image{
 	background-image: url('/images/sala-pesas.jpg');
@@ -45,10 +85,24 @@ a:focus{
 	background-repeat: no-repeat;
 	background-size: cover;
 }
-.h1{
-	font-family: Cosmic Sans MS, Cosmic Sans, Cursive;
-	color: whitesmoke;
-	font-feature-settings: 50px;
+#parallax-image3{
+	background-image: url('/images/banner5.jpg');
+	height: 400px;
+	margin-bottom: 50px;
+	background-attachment: fixed;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+.titulo{
+	font-family: 'Indie Flower', cursive;
+
+	font-size: 100px;
+	color: white;
+	margin: 0;
+	text-align: center;
+	padding-top: 15%;
+
 }
 
 /* Para el formulario*/

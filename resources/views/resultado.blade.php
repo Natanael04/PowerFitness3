@@ -26,7 +26,7 @@
                     
                     <p class="text-muted mb-5">Estado de tu membresia</p>
 
-                    
+                     
                         
                        
                         <div class="form-group mb-3">
