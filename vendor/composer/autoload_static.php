@@ -436,6 +436,7 @@ class ComposerStaticInit8c646c9ad2d2ce01c75215bf3d199dac
         'App\\Providers\\RouteServiceProvider' => __DIR__ . '/../..' . '/app/Providers/RouteServiceProvider.php',
         'App\\Seccion' => __DIR__ . '/../..' . '/app/Seccion.php',
         'App\\User' => __DIR__ . '/../..' . '/app/User.php',
+        'App\\evento' => __DIR__ . '/../..' . '/app/evento.php',
         'BaconQrCode\\Common\\AbstractEnum' => __DIR__ . '/..' . '/bacon/bacon-qr-code/src/BaconQrCode/Common/AbstractEnum.php',
         'BaconQrCode\\Common\\BitArray' => __DIR__ . '/..' . '/bacon/bacon-qr-code/src/BaconQrCode/Common/BitArray.php',
         'BaconQrCode\\Common\\BitMatrix' => __DIR__ . '/..' . '/bacon/bacon-qr-code/src/BaconQrCode/Common/BitMatrix.php',

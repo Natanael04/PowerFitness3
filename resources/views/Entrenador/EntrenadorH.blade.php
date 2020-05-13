@@ -13,17 +13,31 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Datos</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-        ...
+        id
+        <input type="text" name="txtID" id="txtID">
+        fecha
+        <input type="text" name="txtFecha" id="txtFecha">
+        titulio
+        <input type="text" name="txtTitulo" id="txtTitulo">
+        hora
+        <input type="text" name="txtHora" id="txtHora">
+        descrip
+        <input type="text" name="txtDescription" id="txtDescripction">
+        color
+        <input type="color" name="txtColor" id="txtColor">
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-        <button type="button" class="btn btn-primary">Guardar</button>
+        <button id="btnAgregar" class="btn btn-success">Agregar</button>
+        <button id="btnModificar" class="btn btn-warning">Modificar</button>
+        <button id="btnBorrar" class="btn btn-danger">Borrar</button>
+        <button id="btnCancelar" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+        
       </div>
     </div>
   </div>

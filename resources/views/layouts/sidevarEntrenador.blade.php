@@ -27,7 +27,7 @@
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
-    <s<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400&display=swap" rel="stylesheet">
 
     <!-- Styles -->
     
@@ -61,13 +61,37 @@
             right:'dayGridMonth,timeGridWeek,timeGridDay'
           },
           dateClick:function(info){
+             $('#txtFecha').val(info.dateStr);
+
              $('#exampleModal').modal();
-             calendar.addEvent({});
+             console.log(info);
+             calendar.addEvent({ title:"Evento x",date:info.dateStr});
           }
         });
         calendar.setOption('locale','Es');
 
         calendar.render();
+        $('#btnAgregar').click(function(){
+            recolectarDato("POST");
+
+        });
+
+      
+        function recolectarDato(method){
+            nuevoEvento={
+                id:$('txtID').val(),
+                title:$('txtTitulo').val(),
+                description:$('txtDescription').val(),
+                color:$('txtColor').val(),
+                textColor:'#FFFFFF',
+                start:$('txtFecha').val()+" "+$('#txtHora').val(),
+                end:$('txtFecha').val()+" "+$('#txtHora').val(), 
+
+                '_token':$("meta[name='csrf-token']").attr("content"),
+                '_method':method
+            }
+            console.log(nuevoEvento);
+        }
       });
 
     </script>
