@@ -2,14 +2,14 @@
 
 @section('content')
 <div id="parallax-image">
-	<div class="">
-		
-			<h1 class="titulo">Horario</h1>
-		
-	</div>
+  <div class="">
+    
+      <h1 class="titulo">Horario</h1>
+    
+  </div>
 </div>
 <div class="container1" id="Agendar">
-	<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -28,7 +28,7 @@
     </div>
   </div>
 </div>
-	<div id='calendar'></div>
+  <div id='calendar'></div>
 </div>
 <div id="parallax-image2">
   <div class="">
@@ -38,8 +38,8 @@
   </div>
 </div>
 <div class="bodylogin">
-	<div class="container1"  id="Membresia">
-	<section class="contact-box">
+  <div class="container1"  id="Membresia">
+  <section class="contact-box">
        <div class="row no-gutters bg-dark">
            <div class="col-xl-5 col-lg-12 register-bg">
             <div class="position-absolute testiomonial p-4">
@@ -69,7 +69,7 @@
                 </div>
            </div>
        </div>
-   </section>	
+   </section> 
 </div>
 </div>
 

@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Spatie\Permission\Traits\HasRoles;
 use App\User;
-
+use Spatie\Permission\Models\Role;
 
 class MiembrosController extends Controller
 {
@@ -27,17 +27,20 @@ class MiembrosController extends Controller
      */
     public function listar()
     {
-        $usuarios = User::all();
-        return view('Administrador/Miembros', compact('usuarios'));
+        $miembros = User::all();
+        return view('Administrador/Miembros', compact('miembros'));
     }
     /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function crear()
     {
-        //
+        $roles = Role::all()->pluck('name', 'id');
+
+        return view('Administrador.AgregarMiembro', compact('roles'));
+
     }
 
     /**
@@ -46,9 +49,24 @@ class MiembrosController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function guardar(Request $request)
     {
-        //
+        $miembro = new User;
+
+        $miembro->rut = $request->rut;
+        $miembro->name = $request->name;
+        $miembro->apellido = $request->apellido;
+        $miembro->email = $request->email;
+        $miembro->password = bcrypt($request->password);
+        $miembro->membresia_id = $request->membresia_id;
+
+        if ($miembro->save()) {
+            //asignar rol
+            $miembro->assignRole($request->rol);
+
+            return redirect('/Miembros/listar');
+        }
+
     }
 
     /**
@@ -68,9 +86,12 @@ class MiembrosController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function editar($id)
     {
-        //
+        $miembro = User::findOrFail($id);
+        $roles = Role::all()->pluck('name', 'id');
+
+        return view('Administrador.ModificarMiembro', compact('miembro', 'roles'));
     }
 
     /**
@@ -80,9 +101,23 @@ class MiembrosController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function actualizar(Request $request, $id)
     {
-        //
+        $miembro = User::findOrFail($id);
+
+        $miembro->rut = $request->rut;
+        $miembro->name = $request->name;
+        $miembro->apellido = $request->apellido;
+        $miembro->email = $request->email;
+        if ($request->password != null) {
+            $miembro->password = $request->password;
+        }
+        $miembro->membresia_id = $request->membresia_id;
+        $miembro->syncRoles($request->rol);
+
+        $miembro->save();
+
+        return redirect('/Miembros/listar');
     }
 
     /**

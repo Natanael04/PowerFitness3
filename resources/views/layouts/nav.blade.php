@@ -55,25 +55,31 @@
                 <p>datos del loco </p>
 
                 <li class="active">
-                    
-                   
-                            
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('Miembros') }}">{{ __('Miembros') }}</a>
+                                <a class="nav-link" href="{{ route('Miembros') }}">{{ __('Administar Miembros') }}</a>
                             </li>
-                            {{-- <li class="nav-item">
-                                <a class="nav-link" href="{{ route('Agregar') }}">{{ __('Agregar') }}</a>
-                            </li> --}}
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('login') }}">{{ __('Salir') }}</a>
+                                <a class="nav-link" href="{{ route('secciones') }}">{{ __('Administar Secciones') }}</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('horarios') }}">{{ __('Administar Horarios') }}</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('logout') }}"
+                                onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                        {{ __('Cerrar Sesión') }}
+                                    </a>
+
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                        @csrf
+                                    </form>
                             </li>
                 </li>
                 
                
             </ul>
     </nav>
-
-    
             <div id="content">
                 
                 <nav class="navbar navbar-expand-lg navbar-light">

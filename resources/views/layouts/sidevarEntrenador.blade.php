@@ -27,7 +27,7 @@
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/1ab39e0b26.js" crossorigin="anonymous"></script>
 
     <!-- Styles -->
     
@@ -94,6 +94,7 @@
         }
       });
 
+
     </script>
   
     
@@ -143,7 +144,7 @@
                                         </label>
                     
                         </div>
-                    </nav>
+                </nav>
                 <br><br>
                 
                 @yield('content')

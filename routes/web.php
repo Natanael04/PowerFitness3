@@ -28,11 +28,27 @@ Route::view('/resultado', '/resultado')->name('resultado');
 Route::get('/Admin', function () {
   return view('Administrador/Admin');
 });
-Route::view('/Agregar', 'Administrador/Agregar')->name('Agregar');
-Route::get('/Miembros', 'AdminControllers\MiembrosController@listar')->name('Miembros');
+Route::view('/Pago', 'Administrador/Pago')->name('Pago');
+Route::get('/Miembros/listar', 'AdminControllers\MiembrosController@listar')->name('Miembros');
+
+Route::group(['middleware' => ['permission:crear-cliente']], function (){
+  Route::get('/Miembros/Agregar', 'AdminControllers\MiembrosController@crear')->name('miembros.crear');
+  Route::post('/Miembros/Guardar', 'AdminControllers\MiembrosController@guardar')->name('miembros.guardar');
+});//crear un miembro
+Route::group(['middleware' => ['permission:modificar-cliente']], function (){
+  Route::get('/Miembros/{id}/modificar', 'AdminControllers\MiembrosController@editar')->name('miembros.modificar');
+  Route::post('/Miembros/{id}/modificar', 'AdminControllers\MiembrosController@actualizar')->name('miembros.actualizar');
+});//modificar un miembro
 Route::group(['middleware' => ['permission:eliminar-cliente']], function (){
-  Route::get('/Miembros/{id}/eliminar', 'AdminControllers\MiembrosController@eliminar')->name('usuarios.eliminar');
-});
+  Route::get('/Miembros/{id}/eliminar', 'AdminControllers\MiembrosController@eliminar')->name('miembros.eliminar');
+});//eliminar un miembro
+
+
+
+
+Route::get('/Secciones', 'AdminControllers\SeccionesController@listar')->name('secciones');
+Route::view('/horarios', 'Administrador/Pago')->name('horarios');
+
 
 //Rutas Cliente
 Route::get('/ClienteH', function () {
@@ -49,8 +65,8 @@ Route::get('/EntrenadorH', function () {
 });
 
 Route::view('/Agendar', 'Entrenador/Agendar')->name('Agendar');
-Route::view('/CDieta', 'Entrenador/CDieta')->name('Dietas');
-Route::view('/CRutina', 'Entrenador/CRutina')->name('Rutinas');
+Route::view('/CDieta', 'Entrenador/CDieta')->name('CDieta');
+Route::view('/CRutina', 'Entrenador/CRutina')->name('CRutina');
 
 /* hasta aca jajajajja*/
 
@@ -61,15 +77,10 @@ Route::view('/CRutina', 'Entrenador/CRutina')->name('Rutinas');
 Route::get('/Admin', function () {
   return view('Admin');
 });
-
 Route::view('/Pago', 'Pago')->name('Pago');
-
-
+//
 
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-
-Route::post('Agregar','AgregarController@store');
-//Route::get('/Miembros', 'UserController@index');

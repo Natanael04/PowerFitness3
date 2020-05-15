@@ -27,18 +27,29 @@
                         <button class="btn1 btn-outline-dark d-inline-block text-light mr-2 mb-3 width-100"><i class="icon ion-logo-google lead align-middle mr-2"></i> Google </button>
                         <button class="btn1 btn-outline-dark d-inline-block text-light mb-3 width-100"><i class="icon ion-logo-facebook lead align-middle mr-2"></i> Facebook</button>
                     </div>
-                    <p class="text-muted mb-5">Ingresa la siguiente información para Ingresar.</p>
+                    <p class="text-muted mb-5">Ingresa tus datos para Ingresar.</p>
 
-                    <form>
-                       
+                    <form method="POST" action="{{ route('login') }}">
+                        @csrf
+
                         <div class="form-group mb-3">
                             <label class="font-weight-bold">Rut <span class="text-danger">*</span></label>
-                            <input type="email" class="form-control" placeholder="Ingresa tu Rut">
+                            <input id="rut" name="rut" type="text" class="form-control" placeholder="Ingresa tu rut" required autocomplete="rut" autofocus>
                         </div>
                         <div class="form-group mb-3">
                             <label class="font-weight-bold">Contraseña <span class="text-danger">*</span></label>
-                            <input type="password" class="form-control" placeholder="Ingresa una contraseña">
+                            <input id="password" name="password" type="password" class="form-control" placeholder="Ingresa una contraseña" required autocomplete="current-password">
+
+                            @error('password')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                         </div>
+                       {{--  <div class="form-group mb-3">
+                            <label class="font-weight-bold">Contraseña <span class="text-danger">*</span></label>
+                            <input type="password" class="form-control" placeholder="Ingresa una contraseña">
+                        </div> --}}
                         <div class="form-group mb-5">
                             <div class="form-check">
                                 <input class="form-check-input" type="checkbox">

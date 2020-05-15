@@ -8,51 +8,43 @@
 	<div class="mx-auto col-sm-8 main-section" id="myTab" role="tablist">
 		<ul class="nav nav-tabs justify-content-end">
 			<li class="nav-item">
-			<a class="nav-link active" id="list-tab" data-toggle="tab" href="#list" role="tab" aria-controls="list" aria-selected="false">Lista de miembros</a>
+			<a class="nav-link active" id="list-tab" data-toggle="tab" href="#list" role="tab" aria-controls="list" aria-selected="false">Lista de secciones</a>
 			</li>
 		</ul>
 		<div class="tab-content" id="myTabContent">
 			<div class="tab-pane fade show active" id="list" role="tabpanel" aria-labelledby="list-tab">
 			  <div class="card">
 				<div class="card-header">
-					<h4>Miembros</h4>
+					<h4>Secciones</h4>
 					<div class="col-sm-8">
-						<a href="{{ route('miembros.crear')}}"><i class="fas fa-user-plus"></i></a>
+						<a href="{{-- {{ route('seccion.crear')}} --}}"><i class="fas fa-plus-circle"></i></a>
 					</div>
 				</div>
 				<div class="card-body">
-						<!-- Lista de usuarios-->
+						<!-- Lista de secciones-->
 						<div class="table-responsive">
 							<table id="Tabla" class="table table-bordered table-hover table-striped">
 								<thead class="thead-light">
 								<tr>
 									<th scope="col">ID</th>
-									<th scope="col">Rut</th>
 									<th scope="col">Nombre</th>
-									<th scope="col">Apellido</th>
-									<th scope="col">Email</th>
-									<th scope="col">rol</th>
 									<th scope="col">Accion</th>
 								</tr>
 								</thead>
 								<tbody>
 									
-									@foreach ($miembros as $miembro)
+									@foreach ($secciones as $seccion)
 									<tr>
-									 <td>{{ $miembro->id }}</td>
-									 <td>{{ $miembro->rut }}</td>
-									 <td>{{ $miembro->name }}</td>
-									 <td>{{ $miembro->apellido }}</td>
-									 <td>{{ $miembro->email }}</td>
-									 <td>{{ $miembro->roles->implode('name', ', ') }}</td>
+									 <td>{{ $seccion->id }}</td>
+									 <td>{{ $seccion->nombre }}</td>
 									 <td>
 										 @can('modificar-cliente')
-											 <a href="{{ route('miembros.modificar', $miembro->id)}}"><i class="fas fa-edit"></i></a> ||
+											 <a href="{{-- {{ route('secciones.modificar', $seccion->id)}} --}}"><i class="fas fa-edit"></i></a> ||
 										 @else
 										 *
 										 @endcan
 										 @can('eliminar-cliente')
-											 <a href="{{ route('miembros.eliminar', $miembro->id)}}"><i class="fas fa-user-times"></i></a>
+											 <a href="{{-- {{ route('secciones.eliminar', $seccion->id)}} --}}"><i class="fas fa-trash"></i></a>
 										 @else
 										 @endcan
 										 
