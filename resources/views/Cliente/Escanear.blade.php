@@ -1,7 +1,11 @@
 @extends('layouts.sidevarCliente')
 
 @section('content')
+
 <h1>pagina del Cliente </h1>
+{{-- <div id="app">
+            <vue-qr-code-reader></vue-qr-code-reader>
+        </div>  --}}
 <style type="text/css">
                 .scanner-laser{
                         position: absolute;
