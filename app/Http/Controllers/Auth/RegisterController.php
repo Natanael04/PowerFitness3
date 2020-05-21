@@ -54,7 +54,6 @@ class RegisterController extends Controller
             'apellido' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
-            'membresia_id' => ['required', 'int', 'max:10'],
         ]);
     }
 
@@ -72,7 +71,6 @@ class RegisterController extends Controller
             'apellido' => $data['apellido'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
-            'membresia_id' => $data['membresia_id'],
         ]);
     }
 }

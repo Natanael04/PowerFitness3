@@ -89,20 +89,6 @@
                             </div>
                         </div>
 
-                        <div class="form-group row">
-                            <label for="membresia_id" class="col-md-4 col-form-label text-md-right">{{ __('membresia_id') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="membresia_id" type="int" class="form-control @error('membresia_id') is-invalid @enderror" name="membresia_id" value="{{ old('membresia_id') }}" required autocomplete="membresia_id" autofocus>
-
-                                @error('membresia_id')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">

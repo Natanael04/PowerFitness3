@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use Spatie\Permission\Traits\HasRoles;
 use App\User;
 use Spatie\Permission\Models\Role;
+use DB;
 
 class MiembrosController extends Controller
 {
@@ -27,7 +28,13 @@ class MiembrosController extends Controller
      */
     public function listar()
     {
-        $miembros = User::all();
+        $miembros = User::with('membresias')
+        ->join('membresias', 'membresias.user_id', '=', 'users.id')
+        ->select('users.id', 'users.rut', 'users.name', 'users.apellido', 'users.email', 
+                 'membresias.precio', 'membresias.id as membresias_id',
+                 'membresias.fechaInicio', 'membresias.fechaTermino'
+                 )
+        ->get();
         return view('Administrador/Miembros', compact('miembros'));
     }
     /**
@@ -58,7 +65,6 @@ class MiembrosController extends Controller
         $miembro->apellido = $request->apellido;
         $miembro->email = $request->email;
         $miembro->password = bcrypt($request->password);
-        $miembro->membresia_id = $request->membresia_id;
 
         if ($miembro->save()) {
             //asignar rol
@@ -112,7 +118,6 @@ class MiembrosController extends Controller
         if ($request->password != null) {
             $miembro->password = $request->password;
         }
-        $miembro->membresia_id = $request->membresia_id;
         $miembro->syncRoles($request->rol);
 
         $miembro->save();

@@ -2,11 +2,8 @@
 
 @section('content')
 
-<h1>pagina del Cliente </h1>
-{{-- <div id="app">
-            <vue-qr-code-reader></vue-qr-code-reader>
-        </div>  --}}
-<style type="text/css">
+  
+ <style type="text/css">
                 .scanner-laser{
                         position: absolute;
                         margin: 40px;
@@ -39,63 +36,91 @@
                 }
         </style>
          <div style="position: relative;display: inline-block;">
-            <canvas id="qr-canvas" width="320" height="240"></canvas>    
+
+            <div class="video-wrap">
+              <video id="video" playsinline autoplay></video>
+           </div>   
             <div class="scanner-laser laser-rightBottom" style="opacity: 0.5;"></div>
             <div class="scanner-laser laser-rightTop" style="opacity: 0.5;"></div>
             <div class="scanner-laser laser-leftBottom" style="opacity: 0.5;"></div>
             <div class="scanner-laser laser-leftTop" style="opacity: 0.5;"></div>
         </div>
-        
-        <script src="/qr/jquery.js"></script>
-        <script src="/qr/WebCodeCam.js"></script>
-        <script src="/qr/qrcodelib.js"></script>
-        <script src="/qr/DecoderWorker.js"></script>
 
-    
-    <script type="text/javascript">
+<h1>pagina del Cliente </h1>
+<!-- Stream video via webcam -->
+<div class="video-wrap">
+    <video id="video" playsinline autoplay></video>
+</div>
 
-        $('#qr-canvas').WebCodeCam({
-            ReadQRCode: true, // false or true
-            ReadBarecode: true, // false or true
-            width: 320,
-            height: 240,
-            videoSource: {  
-                    id: true,      //default Videosource
-                    maxWidth: 640, //max Videosource resolution width
-                    maxHeight: 480 //max Videosource resolution height
-            },
-            flipVertical: false,  // false or true
-            flipHorizontal: false,  // false or true
-            zoom: -1, // if zoom = -1, auto zoom for optimal resolution else int
-            beep: "/qr/beep.mp3", // string, audio file location
-            autoBrightnessValue: false, // functional when value autoBrightnessValue is int
-            brightness: 0, // int 
-            grayScale: false, // false or true
-            contrast: 0, // int 
-            threshold: 0, // int 
-            sharpness: [], //or matrix, example for sharpness ->  [0, -1, 0, -1, 5, -1, 0, -1, 0]
-            resultFunction: function(resText, lastImageSrc) {
-                        /* resText as decoded code, lastImageSrc as image source
-                        example:
-                        alert(resText);
-                        */ 
-            },
-            getUserMediaError: function() {
-                        /* callback funtion to getUserMediaError
-                        example:
-                        alert('Sorry, the browser you are using doesn\'t support getUserMedia');
-                        */
-            },
-            cameraError: function(error) {
-                        /* callback funtion to cameraError, 
-                        example:
-                        var p, message = 'Error detected with the following parameters:\n';
-                        for (p in error) {
-                                message += p + ': ' + error[p] + '\n';
-                        }
-                        alert(message);
-                        */
+<!-- Trigger canvas web API -->
+<div class="controller">
+    <button id="snap">Capture</button>
+</div>
+
+<!-- Webcam video snapshot -->
+<canvas id="canvas" width="640" height="480"></canvas>
+<script type="text/javascript" src="https://rawgit.com/schmich/instascan-builds/master/instascan.min.js" ></script> 
+
+<script>
+    'use strict';
+
+const video = document.getElementById('video');
+const canvas = document.getElementById('canvas');
+const snap = document.getElementById("snap");
+const errorMsgElement = document.querySelector('span#errorMsg');
+
+const constraints = {
+  audio: true,
+  video: {
+    width: 1280, height: 720
+  }
+};
+
+
+let scanner = new Instascan.Scanner(
+            {
+                video: document.getElementById('video')
+            }
+        );
+        scanner.addListener('scan', function(content) {
+            alert('Ir: ' + content);
+            window.open(content, "_blank");
+        });
+        Instascan.Camera.getCameras().then(cameras => 
+        {
+            if(cameras.length > 0){
+                scanner.start(cameras[0]);
+            } else {
+                console.error("Não existe câmera no dispositivo!");
             }
         });
-    </script>
+
+// Access webcam
+async function init() {
+  try {
+    const stream = await navigator.mediaDevices.getUserMedia(constraints);
+    handleSuccess(stream);
+  } catch (e) {
+    errorMsgElement.innerHTML = `navigator.getUserMedia error:${e.toString()}`;
+  }
+}
+
+// Success
+function handleSuccess(stream) {
+  window.stream = stream;
+  video.srcObject = stream;
+}
+
+// Load init
+init();
+
+// Draw image
+var context = canvas.getContext('2d');
+snap.addEventListener("click", function() {
+        context.drawImage(video, 0, 0, 640, 480);
+});
+
+
+
+</script> 
 @endsection

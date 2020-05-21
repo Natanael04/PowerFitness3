@@ -13,9 +13,10 @@ class User extends Authenticatable
     use Notifiable;
     use HasRoles;
 
-    public function membresia()
-    {
-        return $this->hasOne(Membresia::class);
+    public function membresias(){
+
+        return $this->belongsTo(User::class);
+        
     }
 
     /**
@@ -25,7 +26,7 @@ class User extends Authenticatable
      */
     
     protected $fillable = [
-        'rut', 'name', 'apellido','email', 'password', 'membresia_id',
+        'rut', 'name', 'apellido','email', 'password',
     ];
 
     /**
