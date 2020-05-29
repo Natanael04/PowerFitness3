@@ -5,12 +5,7 @@
 <body class="fondo">
 	
 <div class="container1">
-	<div class="mx-auto col-sm-11 main-section" id="myTab" role="tablist">
-		<ul class="nav nav-tabs justify-content-end">
-			<li class="nav-item">
-			<a class="nav-link active" id="list-tab" data-toggle="tab" href="#list" role="tab" aria-controls="list" aria-selected="false">Lista de miembros</a>
-			</li>
-		</ul>
+	<div class="mx-auto col-sm-12 main-section" id="myTab" role="tablist">
 		<div class="tab-content" id="myTabContent">
 			<div class="tab-pane fade show active" id="list" role="tabpanel" aria-labelledby="list-tab">
 			  <div class="card">
@@ -39,6 +34,7 @@
 									<th class="text-center" scope="col">Apellido</th>
 									<th class="text-center" scope="col">Email</th>
 									<th class="text-center" scope="col">rol</th>
+									<th class="text-center" scope="col">Estado</th>
 									<th class="text-center" scope="col">Accion</th>
 								</tr>
 								</thead>
@@ -52,6 +48,11 @@
 									<td class="text-center">{{ $miembro->apellido }}</td>
 									<td class="text-center">{{ $miembro->email }}</td>
 									<td class="text-center">{{ $miembro->roles->implode('name', ', ') }}</td>
+									@if ($miembro->estado  == 1)
+                                        <td class="text-center">Activo</td>
+                                    @else
+                                        <td class="text-center">Inactivo</td>
+                                    @endif
 									<td class="text-center">
 										@can('leer-cliente')
 											<a class="px-1" href="#miembroModal-{{$miembro->id}}" data-toggle="modal" title="{{ $miembro->name }}"><i class="fas fa-eye"></i></a>|
@@ -98,6 +99,7 @@
 							<p class="font-weight-bold">Costo Membresia:</p>
 							<p class="font-weight-bold">Fecha Inicio:</p>
 							<p class="font-weight-bold">Fecha Vencimiento:</p>
+							<p class="font-weight-bold">Estado Membresia:</p>
 						</div>
 						<div class="col-sm-6">
 							<p>{{$miembro->rut}}</p>
@@ -105,10 +107,27 @@
 							<p>{{$miembro->apellido}}</p>
 							<p>{{$miembro->email}}</p>
 							<p>{{$miembro->roles->implode('name', ', ') }}</p>
-							<p>{{$miembro->precio}}</p>
-							<p>{{$miembro->fechaInicio}}</p>
-							<p>{{$miembro->fechaTermino}}</p>
-
+							@if ( $miembro->precio == null)
+                                <p><em>Sin Datos</em></p>
+                            @else
+                                <p>{{ $miembro->precio }}</p>
+                            @endif
+                            @if ( $miembro->fechaInicio == null)
+                                <p><em>Sin Datos</em></p>
+                            @else
+                                <p>{{ $miembro->fechaInicio }}</p>
+                            @endif
+							@if ( $miembro->fechaTermino == null)
+                                <p><em>Sin Datos</em></p>
+                            @else
+                                <p>{{ $miembro->fechaTermino }}</p>
+                            @endif
+							@if ($miembro->estado  == 1)
+                                <p class="font-weight-bold"><em>Activo</em></p>
+                            @else
+                                <p class="font-weight-bold"><em>Inactivo</em></p>
+                            @endif
+							
 						</div>
 					</div>
 					

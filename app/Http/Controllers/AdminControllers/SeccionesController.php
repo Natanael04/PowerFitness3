@@ -37,9 +37,7 @@ class SeccionesController extends Controller
      */
     public function crear()
     {
-        /* $roles = Role::all()->pluck('name', 'id');
-
-        return view('Administrador.AgregarSeccion', compact('roles'));     */
+        return view('Administrador.AgregarSeccion');    
     }
 
     /**
@@ -48,9 +46,15 @@ class SeccionesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function guardar(Request $request)
     {
-        //
+        $seccion = new Seccion;
+        $seccion->nombre = $request->nombre;
+        $seccion->hora_inicio = $request->hora_inicio;
+        $seccion->hora_termino = $request->hora_termino;
+        $seccion->save();
+
+        return redirect('/Secciones/listar');
     }
 
     /**
@@ -64,15 +68,18 @@ class SeccionesController extends Controller
         //
     }
 
+    
     /**
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function editar($id)
     {
-        //
+        $seccion = Seccion::findOrFail($id);
+
+        return view('Administrador.ModificarSeccion', compact('seccion'));
     }
 
     /**
@@ -82,9 +89,17 @@ class SeccionesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function actualizar(Request $request, $id)
     {
-        //
+        $seccion = Seccion::findOrFail($id);
+
+        $seccion->nombre = $request->nombre;
+        $seccion->hora_inicio = $request->hora_inicio;
+        $seccion->hora_termino = $request->hora_termino;
+        
+        $seccion->save();
+
+        return redirect('/Secciones/listar');
     }
 
     /**
@@ -93,8 +108,9 @@ class SeccionesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function eliminar($id)
     {
-        //
+        Seccion::findOrFail($id)->delete();
+            return redirect()->back();
     }
 }

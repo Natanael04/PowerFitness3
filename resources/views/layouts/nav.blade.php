@@ -41,11 +41,11 @@
 
     <div class="wrapper">
 
-        <nav id="sidebar">
+        <nav  id="sidebar">
 
             <div id="sidebar-header">
-                <a class="navbar-brand" href="{{ route('Home') }}">
-                    <img id="" src="images/logo-trans-blanco.png" width="200" height="80" class="d-inline-block align-top" alt="">
+                <a class="navbar-brand container-fluid"  href="{{ route('Home') }}">
+                    <img id="" src="../images/logo-trans-blanco.png" width="200" height="80"  class="d-inline-block align-top" alt="">
                     
                 </a>
                 
@@ -59,10 +59,10 @@
                                 <a class="nav-link" href="{{ route('Miembros') }}">{{ __('Administar Miembros') }}</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('secciones') }}">{{ __('Administar Secciones') }}</a>
+                                <a class="nav-link" href="{{ route('Membresias') }}">{{ __('Administar Membresias') }}</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('horarios') }}">{{ __('Administar Horarios') }}</a>
+                                <a class="nav-link" href="{{ route('secciones') }}">{{ __('Administar Secciones') }}</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('logout') }}"

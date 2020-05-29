@@ -5,19 +5,21 @@
 <body class="fondo">
 	
 <div class="container1">
-	<div class="mx-auto col-sm-8 main-section" id="myTab" role="tablist">
-		<ul class="nav nav-tabs justify-content-end">
-			<li class="nav-item">
-			<a class="nav-link active" id="list-tab" data-toggle="tab" href="#list" role="tab" aria-controls="list" aria-selected="false">Lista de secciones</a>
-			</li>
-		</ul>
+	<div class="mx-auto col-sm-6 main-section" id="myTab" role="tablist">
 		<div class="tab-content" id="myTabContent">
 			<div class="tab-pane fade show active" id="list" role="tabpanel" aria-labelledby="list-tab">
 			  <div class="card">
 				<div class="card-header">
-					<h4>Secciones</h4>
-					<div class="col-sm-8">
-						<a href="{{-- {{ route('seccion.crear')}} --}}"><i class="fas fa-plus-circle"></i></a>
+					<div class="row ml-4 mr-2">
+						<div class="col-sm-5 ">
+							<h3>Secciones</h3>
+						</div>
+						<div class="col-sm-7 text-right">
+							@can('crear-cliente')
+							<a href="{{ route('secciones.crear')}}" class="btn btn-secondary">Agregar Nueva Seccion  <i class="fas fa-user-plus"></i></a>
+							@else
+							@endcan
+						</div>
 					</div>
 				</div>
 				<div class="card-body">
@@ -28,6 +30,8 @@
 								<tr>
 									<th scope="col">ID</th>
 									<th scope="col">Nombre</th>
+									<th scope="col">Hora Inicio</th>
+									<th scope="col">Hora Termino</th>
 									<th scope="col">Accion</th>
 								</tr>
 								</thead>
@@ -35,21 +39,21 @@
 									
 									@foreach ($secciones as $seccion)
 									<tr>
-									 <td>{{ $seccion->id }}</td>
-									 <td>{{ $seccion->nombre }}</td>
-									 <td>
-										 @can('modificar-cliente')
-											 <a href="{{-- {{ route('secciones.modificar', $seccion->id)}} --}}"><i class="fas fa-edit"></i></a> ||
-										 @else
-										 *
-										 @endcan
-										 @can('eliminar-cliente')
-											 <a href="{{-- {{ route('secciones.eliminar', $seccion->id)}} --}}"><i class="fas fa-trash"></i></a>
-										 @else
-										 @endcan
-										 
-{{-- 										 <a href="#"><i class="fas fa-edit"></i></a>
- --}}								 </td>
+									 <td class="text-center">{{ $seccion->id }}</td>
+									 <td class="text-center">{{ $seccion->nombre }}</td>
+									 <td class="text-center">{{ $seccion->hora_inicio }}</td>
+									 <td class="text-center">{{ $seccion->hora_termino }}</td>
+									 <td class="text-center">
+									@can('modificar-cliente')
+										<a class="px-1" href="{{ route('secciones.modificar', $seccion->id)}}"><i class="fas fa-edit"></i></a>|
+									@else
+									*
+									@endcan
+									@can('eliminar-cliente')
+										<a class="px-1" href="{{ route('secciones.eliminar', $seccion->id)}}"><i class="fas fa-trash"></i></a>
+									@else
+									@endcan	
+								 </td>
 								 </tr>
 									@endforeach
 								</tbody>

@@ -3,10 +3,14 @@
 namespace App\Http\Controllers\AdminControllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\MiembrosGuardarRequest;
+use App\Http\Requests\MiembrosActualizarRequest;
 use App\Http\Controllers\Controller;
 use Spatie\Permission\Traits\HasRoles;
 use App\User;
+use App\Membresia;
 use Spatie\Permission\Models\Role;
+use Illuminate\Support\Facades\Hash;
 use DB;
 
 class MiembrosController extends Controller
@@ -32,7 +36,7 @@ class MiembrosController extends Controller
         ->join('membresias', 'membresias.user_id', '=', 'users.id')
         ->select('users.id', 'users.rut', 'users.name', 'users.apellido', 'users.email', 
                  'membresias.precio', 'membresias.id as membresias_id',
-                 'membresias.fechaInicio', 'membresias.fechaTermino'
+                 'membresias.fechaInicio', 'membresias.fechaTermino', 'membresias.estado'
                  )
         ->get();
         return view('Administrador/Miembros', compact('miembros'));
@@ -56,20 +60,30 @@ class MiembrosController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function guardar(Request $request)
+    public function guardar(MiembrosGuardarRequest $request)
     {
         $miembro = new User;
+        $membresia = new  Membresia;
+
 
         $miembro->rut = $request->rut;
         $miembro->name = $request->name;
         $miembro->apellido = $request->apellido;
         $miembro->email = $request->email;
-        $miembro->password = bcrypt($request->password);
+        $miembro->password = $request->password;
+        //$miembro->password = bcrypt($request->password);
+        
 
+/*     dd($miembro);
+ */
         if ($miembro->save()) {
             //asignar rol
             $miembro->assignRole($request->rol);
+            $miembroID=$miembro->id;
+            $membresia->user_id = $miembroID;
+            $membresia->estado = 0;
 
+            $membresia->save();
             return redirect('/Miembros/listar');
         }
 
@@ -107,7 +121,7 @@ class MiembrosController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function actualizar(Request $request, $id)
+    public function actualizar(MiembrosActualizarRequest $request, $id)
     {
         $miembro = User::findOrFail($id);
 
@@ -133,7 +147,11 @@ class MiembrosController extends Controller
      */
     public function eliminar($id)
     {
-            User::findOrFail($id)->delete();
-            return redirect()->back();
+
+        $miembro = User::findOrFail($id);
+        $membresia = Membresia::where('user_id',$miembro->id)->delete();
+
+        User::findOrFail($id)->delete();
+        return redirect()->back();
     }
 }

@@ -13,14 +13,14 @@ class CreateUsersTable extends Migration
      */
     public function up()
     {
-        Schema::create('clases', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('horario');
-        });
 
         Schema::create('seccions', function (Blueprint $table) {
             $table->increments('id');
             $table->string('nombre');
+            $table->string('hora_inicio');
+            $table->string('hora_termino');
+
+            $table->timestamps();
         });
 
 
@@ -38,11 +38,13 @@ class CreateUsersTable extends Migration
         });
         Schema::create('membresias', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('precio');
-            $table->date('fechaInicio');
-            $table->date('fechaTermino');
+            $table->integer('precio')->nullable();
+            $table->date('fechaInicio')->nullable();
+            $table->date('fechaTermino')->nullable();
             $table->integer('user_id')->unsigned(); // Relación con usuarios
             $table->foreign('user_id')->references('id')->on('users'); // clave foranea
+            $table->boolean('estado');	
+            $table->timestamps();
         });
     }
 
@@ -53,7 +55,6 @@ class CreateUsersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('clases');
         Schema::dropIfExists('seccions');
         Schema::dropIfExists('membresias');
         Schema::dropIfExists('users');

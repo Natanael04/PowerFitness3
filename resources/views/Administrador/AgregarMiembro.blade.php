@@ -1,96 +1,95 @@
 @extends('layouts.nav')
 
 @section('content')
-    <div class="container">
-        
-        
-        <div class="login-content">
-            <form action="index.html">
-                <img src="images/avatar.svg">
-                <h2 class="title">Agregar</h2>
-                <div class="input-div one">
-                   <div class="i">
-                        <i class="fas fa-user"></i>
-                   </div>
-                   <div class="div">
-                        <h5>Rut</h5>
-                        <input type="text" class="input">
-                   </div>
-                </div>
-                <div class="input-div pass">
-                   <div class="i"> 
-                        <i class="fas fa-lock"></i>
-                   </div>
-                   <div class="div">
-                        <h5>Nombre</h5>
-                        <input type="text" class="input">
-                   </div>
-                </div>
-                <div class="input-div one">
-                   <div class="i">
-                        <i class="fas fa-user"></i>
-                   </div>
-                   <div class="div">
-                        <h5>Apellido</h5>
-                        <input type="text" class="input">
-                   </div>
-                </div>
-                <div class="input-div one">
-                   <div class="i">
-                        <i class="fas fa-user"></i>
-                   </div>
-                   <div class="div">
-                        <h5>Email</h5>
-                        <input type="email" class="input">
-                   </div>
-                </div>
-                <div class="input-div one">
-                   <div class="i">
-                        <i class="fas fa-user"></i>
-                   </div>
-                   <div class="div">
-                        <h5>Contraseña</h5>
-                        <input type="password" class="input">
-                   </div>
-                </div>
+<html>
 
-                
-                <input type="submit" class="btnM" value="Gurdar">
-            </form>
-        </div>
-    </div>
-    <script>
-        const inputs = document.querySelectorAll('.input');
-        function focusFunc(){
-            let parent = this.parentNode.parentNode;
-            parent.classList.add("focus");
-        }
-         function blurFunc(){
-            let parent = this.parentNode.parentNode;
-            if (this.value == "") {
-                parent.classList.remove("focus");
-            }
-            
-        }
-        inputs.forEach(input =>{
-            input.addEventListener('focus',focusFunc);
-            input.addEventListener('blur',blurFunc);
-        })
-    </script>
 
-{{-- <form action="{{ route('miembros.guardar')}}" method="POST">
-	@csrf
-	<input type="text" name="rut" placeholder="Ingrese rut">
-	<input type="text" name="name" placeholder="Ingrese nombre">
-	<input type="text" name="apellido" placeholder="Ingrese apellido">
-	<input type="email" name="email" placeholder="Email...">
-	<input type="password" name="password" placeholder="Contraseña...">
-	<select name="rol">
-		@foreach ($roles as $key => $value)
-			<option value="{{$value}}">{{ $value }}</option>
+<head>
+	 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+</head>
+<body class="fondo">
+	
+<div class="container">
+	<div class="mx-auto col-sm-5 main-section" id="myTab" role="tablist">
+		<div class="tab-content" id="myTabContent">
+			<div class="tab-pane fade show active" id="form" role="tabpanel" aria-labelledby="form-tab">
+			<div class="card">
+				<div class="card-header">
+					<h4>Agregar Nuevo Miembro</h4>
+				</div>
+				<div class="card-body">
+					<!-- Formulario de usuarios-->
+
+@if (count($errors) > 0)
+	
+		@foreach ($errors->all() as $error)
+		<div class="alert alert-danger alert-dismissible fade show" role="alert">
+			<strong>{{ $error }}</strong>
+			<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+			<span aria-hidden="true">&times;</span>
+			</button>
+		</div>
+			
 		@endforeach
-	</select>
-	<input type="submit" value="Guardar" class="btn btn-success">
-</form> --}}
-
+  	
+@endif
+                <form action="{{ route('miembros.guardar')}}" method="post">
+                    @csrf
+					<div class="form-group row">
+						<label class="col-sm-4 col-form-label form-control-label">Rut</label>
+						<div class="col-sm-8">
+                        <input class="form-control" type="text" id="rut" name="rut" required oninput="checkRut(this)" maxlength="10" autocomplete="off">
+						</div>
+					</div>
+					<div class="form-group row">
+						<label class="col-sm-4 col-form-label form-control-label">Nombre</label>
+						<div class="col-sm-8">
+							<input class="form-control" type="text" id="name" name="name" required autocomplete="off">
+						</div>
+					</div>
+					<div class="form-group row">
+						<label class="col-sm-4 col-form-label form-control-label">Apellido</label>
+						<div class="col-sm-8">
+							<input class="form-control" type="text" id="apellido" name="apellido" required autocomplete="off">
+						</div>
+					</div>
+					<div class="form-group row">
+						<label class="col-sm-4 col-form-label form-control-label">Email</label>
+						<div class="col-sm-8">
+							<input class="form-control" type="email" id="email" name="email" required autocomplete="off">
+						</div>
+					</div>
+					<div class="form-group row">
+						<label class="col-sm-4 col-form-label form-control-label">Contraseña</label>
+						<div class="col-sm-8">
+							<input class="form-control" type="password" id="password" name="password"  required autocomplete="off">
+						</div>
+					</div>
+					<div class="form-group row">
+						<label class="col-sm-4 col-form-label form-control-label">Tipo Usuario</label>
+						<div class="col-sm-8">
+                            <select  class="form-control" name="rol" required>
+                                 <option value="" selected="true" disabled>Seleccione Rol</option>
+                              @foreach ($roles as $key => $value)
+                                   <option value="{{$value}}">{{ $value }}</option>
+                              @endforeach
+                         </select>
+						</div>
+					</div>
+					
+					<div class="form-group row">
+						<div class="col-sm-12 text-right">
+							<input type="submit" class="btn btn-danger" value="Guardar">
+						</div>
+					</div>
+					<script src="/js/validarRUT.js"></script>
+                </form>
+				</div>
+			</div>
+			</div>
+		</div>
+	</div>
+</div>
+</body>
+</html>
 @endsection

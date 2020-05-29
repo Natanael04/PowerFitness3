@@ -4,64 +4,66 @@
 
 <body class="fondo">
 	
-<div class="container1">
-	<div class="mx-auto col-sm-8 main-section" id="myTab" role="tablist">
-		<ul class="nav nav-tabs justify-content-end">
-			<li class="nav-item">
-			<a class="nav-link active" id="form-tab" data-toggle="tab" href="#form" role="tab" aria-controls="form" aria-selected="false">Editar Usuario</a>				   	
-			</li>
-		</ul>
+<div class="container">
+	<div class="mx-auto col-sm-5 main-section" id="myTab" role="tablist">
 		<div class="tab-content" id="myTabContent">
 			<div class="tab-pane fade show active" id="form" role="tabpanel" aria-labelledby="form-tab">
 			<div class="card">
 				<div class="card-header">
-					<h4>Informacion de Usuario</h4>
+					<h4>Editar Usuario</h4>
 				</div>
 				<div class="card-body">
 					<!-- Formulario de usuarios-->
 
+@if (count($errors) > 0)
+	
+		@foreach ($errors->all() as $error)
+		<div class="alert alert-danger alert-dismissible fade show" role="alert">
+			<strong>{{ $error }}</strong>
+			<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+			<span aria-hidden="true">&times;</span>
+			</button>
+		</div>
+			
+		@endforeach
+  	
+@endif
                 <form action="{{ route('miembros.actualizar', $miembro->id)}}" method="post">
                     @csrf
 					<div class="form-group row">
-						<label class="col-lg-3 col-form-label form-control-label">Rut</label>
-						<div class="col-lg-9">
-                        <input class="form-control" type="text" id="rut" name="rut" value="{{$miembro->rut}}">
+						<label class="col-lg-4 col-form-label form-control-label">Rut</label>
+						<div class="col-lg-8">
+                        <input class="form-control" type="text" id="rut" name="rut" oninput="checkRut(this)" required maxlength="10" value="{{$miembro->rut}}">
 						</div>
 					</div>
 					<div class="form-group row">
-						<label class="col-lg-3 col-form-label form-control-label">Nombre</label>
-						<div class="col-lg-9">
-							<input class="form-control" type="text" id="name" name="name" value="{{$miembro->name}}">
+						<label class="col-lg-4 col-form-label form-control-label">Nombre</label>
+						<div class="col-lg-8">
+							<input class="form-control" type="text" id="name" name="name" required value="{{$miembro->name}}">
 						</div>
 					</div>
 					<div class="form-group row">
-						<label class="col-lg-3 col-form-label form-control-label">Apellido</label>
-						<div class="col-lg-9">
-							<input class="form-control" type="text" id="apellido" name="apellido" value="{{$miembro->apellido}}">
+						<label class="col-lg-4 col-form-label form-control-label">Apellido</label>
+						<div class="col-lg-8">
+							<input class="form-control" type="text" id="apellido" name="apellido" required value="{{$miembro->apellido}}">
 						</div>
 					</div>
 					<div class="form-group row">
-						<label class="col-lg-3 col-form-label form-control-label">Email</label>
-						<div class="col-lg-9">
-							<input class="form-control" type="email" id="email" name="email" value="{{$miembro->email}}">
+						<label class="col-lg-4 col-form-label form-control-label">Email</label>
+						<div class="col-lg-8">
+							<input class="form-control" type="email" id="email" name="email" required value="{{$miembro->email}}">
 						</div>
 					</div>
 					<div class="form-group row">
-						<label class="col-lg-3 col-form-label form-control-label">Contraseña</label>
-						<div class="col-lg-9">
-							<input class="form-control" type="password" id="password" name="password" >
+						<label class="col-lg-4 col-form-label form-control-label">Contraseña</label>
+						<div class="col-lg-8">
+							<input class="form-control" type="password" id="password" name="password" required >
 						</div>
 					</div>
 					<div class="form-group row">
-						<label class="col-lg-3 col-form-label form-control-label">Membresia_ID</label>
-						<div class="col-lg-9">
-							<input class="form-control" type="number" id="membresia_id" name="membresia_id" value="{{$miembro->membresia_id}}">
-						</div>
-					</div>
-					<div class="form-group row">
-						<label class="col-lg-3 col-form-label form-control-label">Tipo Usuario</label>
-						<div class="col-lg-9">
-                              <select class="form-control" name="rol">
+						<label class="col-lg-4 col-form-label form-control-label">Tipo Usuario</label>
+						<div class="col-lg-8">
+                              <select class="form-control" name="rol" required>
                                   
                                 @foreach ($roles as $key => $value)
                                     @if ($miembro->hasRole($value))
@@ -75,10 +77,11 @@
 					</div>
 					
 					<div class="form-group row">
-						<div class="col-lg-12 text-center">
-							<input type="submit" class="btn btn-primary" value="Guardar">
+						<div class="col-lg-12 text-right">
+							<input type="submit" class="btn btn-danger" value="Guardar">
 						</div>
 					</div>
+					<script src="/js/validarRUT.js"></script>
                 </form>
 				</div>
 			</div>

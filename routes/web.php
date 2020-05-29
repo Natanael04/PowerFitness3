@@ -16,9 +16,12 @@ Route::view('/','Home')->name('Home');/*esta te lleva al inicio*/
 
 /*estas rutas agregue shoo*/
 
-Route::get('/login1', function () {
-  return view('auth/login1');
+Route::get('/login', function () {
+  return view('auth/login');
 });
+
+//Route::post('/login', 'Auth\LoginController@login')->name('login');
+
 Route::get('/totem', function () {
   return view('/totem');
 });
@@ -28,7 +31,6 @@ Route::view('/resultado', '/resultado')->name('resultado');
 Route::get('/Admin', function () {
   return view('Administrador/Admin');
 });
-Route::view('/Pago', 'Administrador/Pago')->name('Pago');
 Route::get('/Miembros/listar', 'AdminControllers\MiembrosController@listar')->name('Miembros');
 
 Route::group(['middleware' => ['permission:crear-cliente']], function (){
@@ -44,10 +46,27 @@ Route::group(['middleware' => ['permission:eliminar-cliente']], function (){
 });//eliminar un miembro
 
 
+Route::get('/Membresias/listar', 'AdminControllers\MembresiasController@listar')->name('Membresias');
 
+Route::group(['middleware' => ['permission:modificar-cliente']], function (){
+  Route::get('/Membresias/{id}/modificar', 'AdminControllers\MembresiasController@editar')->name('membresias.modificar');
+  Route::post('/Membresias/{id}/modificar', 'AdminControllers\MembresiasController@actualizar')->name('membresias.actualizar');
+});//modificar un miembro
 
-Route::get('/Secciones', 'AdminControllers\SeccionesController@listar')->name('secciones');
-Route::view('/horarios', 'Administrador/Pago')->name('horarios');
+Route::get('/Secciones/listar', 'AdminControllers\SeccionesController@listar')->name('secciones');
+
+Route::group(['middleware' => ['permission:crear-cliente']], function (){
+  Route::get('/Secciones/Agregar', 'AdminControllers\SeccionesController@crear')->name('secciones.crear');
+  Route::post('/Secciones/Guardar', 'AdminControllers\SeccionesController@guardar')->name('secciones.guardar');
+});//crear una seccion
+Route::group(['middleware' => ['permission:modificar-cliente']], function (){
+  Route::get('/Secciones/{id}/modificar', 'AdminControllers\SeccionesController@editar')->name('secciones.modificar');
+  Route::post('/Secciones/{id}/modificar', 'AdminControllers\SeccionesController@actualizar')->name('secciones.actualizar');
+});//modificar una seccion
+Route::group(['middleware' => ['permission:eliminar-cliente']], function (){
+  Route::get('/Secciones/{id}/eliminar', 'AdminControllers\SeccionesController@eliminar')->name('secciones.eliminar');
+});//eliminar una seccion
+
 
 
 //Rutas Cliente

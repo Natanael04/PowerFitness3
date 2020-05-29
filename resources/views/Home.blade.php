@@ -78,7 +78,7 @@
                                             <li><a href="#gallery">Galería</a></li>
                                             <li><a href="#plans">Precios </a></li>
                                             <li><a href="#footer">Contáctanos</a></li>
-                                            <li><a href="/login1">Login</a></li>
+                                            <li><a href="/login">Login</a></li>
                                         </ul>
                                     </div>
                                 </div>
