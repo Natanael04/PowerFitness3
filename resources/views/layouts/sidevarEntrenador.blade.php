@@ -71,6 +71,7 @@
         calendar.setOption('locale','Es');
 
         calendar.render();
+        
         $('#btnAgregar').click(function(){
             recolectarDato("POST");
 
