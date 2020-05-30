@@ -103,3 +103,13 @@ Route::view('/Pago', 'Pago')->name('Pago');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+
+
+
+
+
+
+Route::get('/totem', function () {
+  return view('/totem');
+});
