@@ -64,13 +64,18 @@
 										*
 										@endcan
 										@can('eliminar-cliente')
-											<a class="px-1" href="{{ route('miembros.eliminar', $miembro->id)}}"><i class="fas fa-user-times "></i></a>
+											<a class="px-1" href="{{ route('miembros.eliminar', $miembro->id)}}" onclick="return confirm('Esta seguro de eliminar?, esta acción es irreversible.')"><i class="fas fa-user-times "></i></a>
 										@else
 										@endcan										 
 								 	</td>
 								 </tr>
 									@endforeach
 								</tbody>
+								@can('leer-cliente')
+									<p>Click <a href="{{ route('miembros.pdf') }}" style="color: #0000EE;"><u>aqui</u></a> para exportar los miembros en PDF.</p>
+								@else
+								@endcan										 
+
 							</table>
 						</div>
 				</div>

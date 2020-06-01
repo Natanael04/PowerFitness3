@@ -69,7 +69,7 @@
 						<label class="col-sm-4 col-form-label form-control-label">Tipo Usuario</label>
 						<div class="col-sm-8">
                             <select  class="form-control" name="rol" required>
-                                 <option value="" selected="true" disabled>Seleccione Rol</option>
+                                 <option value="" selected="true" disabled hidden>Seleccione Rol</option>
                               @foreach ($roles as $key => $value)
                                    <option value="{{$value}}">{{ $value }}</option>
                               @endforeach

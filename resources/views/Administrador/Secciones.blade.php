@@ -50,7 +50,7 @@
 									*
 									@endcan
 									@can('eliminar-cliente')
-										<a class="px-1" href="{{ route('secciones.eliminar', $seccion->id)}}"><i class="fas fa-trash"></i></a>
+										<a class="px-1" href="{{ route('secciones.eliminar', $seccion->id)}}" onclick="return confirm('Esta seguro de eliminar?, esta acción es irreversible.')"><i class="fas fa-trash"></i></a>
 									@else
 									@endcan	
 								 </td>

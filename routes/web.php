@@ -45,7 +45,9 @@ Route::group(['middleware' => ['permission:eliminar-cliente']], function (){
   Route::get('/Miembros/{id}/eliminar', 'AdminControllers\MiembrosController@eliminar')->name('miembros.eliminar');
 });//eliminar un miembro
 
-
+Route::group(['middleware' => ['permission:leer-cliente']], function (){
+  Route::get('miembros-lista-pdf', 'AdminControllers\MiembrosController@exportarPdf')->name('miembros.pdf');
+});
 Route::get('/Membresias/listar', 'AdminControllers\MembresiasController@listar')->name('Membresias');
 
 Route::group(['middleware' => ['permission:modificar-cliente']], function (){

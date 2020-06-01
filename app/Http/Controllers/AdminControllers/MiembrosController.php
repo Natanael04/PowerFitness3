@@ -12,6 +12,7 @@ use App\Membresia;
 use Spatie\Permission\Models\Role;
 use Illuminate\Support\Facades\Hash;
 use DB;
+use Barryvdh\DomPDF\Facade as PDF;
 
 class MiembrosController extends Controller
 {
@@ -153,5 +154,18 @@ class MiembrosController extends Controller
 
         User::findOrFail($id)->delete();
         return redirect()->back();
+    }
+
+    public function exportarPdf(){
+        $miembros = User::with('membresias')
+        ->join('membresias', 'membresias.user_id', '=', 'users.id')
+        ->select('users.id', 'users.rut', 'users.name', 'users.apellido', 'users.email', 
+                 'membresias.precio', 'membresias.id as membresias_id',
+                 'membresias.fechaInicio', 'membresias.fechaTermino', 'membresias.estado'
+                 )
+        ->get();
+
+        $pdf = PDF::loadView('pdf.miembros', compact('miembros'))->setPaper('a3', 'landscape');
+        return $pdf->download('Lista-Miembros.pdf');
     }
 }

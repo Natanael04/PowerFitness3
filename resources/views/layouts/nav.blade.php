@@ -52,7 +52,6 @@
                 
             </div>
             <ul class="list-unstyled components">
-                <p>datos del loco </p>
 
                 <li class="active">
                             <li class="nav-item">
