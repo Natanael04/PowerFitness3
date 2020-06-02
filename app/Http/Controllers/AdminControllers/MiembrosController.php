@@ -13,6 +13,8 @@ use Spatie\Permission\Models\Role;
 use Illuminate\Support\Facades\Hash;
 use DB;
 use Barryvdh\DomPDF\Facade as PDF;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\UsersExport;
 
 class MiembrosController extends Controller
 {
@@ -167,5 +169,8 @@ class MiembrosController extends Controller
 
         $pdf = PDF::loadView('pdf.miembros', compact('miembros'))->setPaper('a3', 'landscape');
         return $pdf->download('Lista-Miembros.pdf');
+    }
+    public function exportarExcel(){
+        return Excel::download(new UsersExport, 'Lista-Miembros.xlsx');
     }
 }

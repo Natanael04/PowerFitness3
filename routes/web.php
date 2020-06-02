@@ -47,6 +47,7 @@ Route::group(['middleware' => ['permission:eliminar-cliente']], function (){
 
 Route::group(['middleware' => ['permission:leer-cliente']], function (){
   Route::get('miembros-lista-pdf', 'AdminControllers\MiembrosController@exportarPdf')->name('miembros.pdf');
+  Route::get('miembros-lista-excel', 'AdminControllers\MiembrosController@exportarExcel')->name('miembros.excel');
 });
 Route::get('/Membresias/listar', 'AdminControllers\MembresiasController@listar')->name('Membresias');
 

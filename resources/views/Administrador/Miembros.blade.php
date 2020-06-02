@@ -75,7 +75,10 @@
 									<p>Click <a href="{{ route('miembros.pdf') }}" style="color: #0000EE;"><u>aqui</u></a> para exportar los miembros en PDF.</p>
 								@else
 								@endcan										 
-
+								@can('leer-cliente')
+									<p>Click <a href="{{ route('miembros.excel') }}" style="color: #0000EE;"><u>aqui</u></a> para exportar los miembros en Excel.</p>
+								@else
+								@endcan
 							</table>
 						</div>
 				</div>
