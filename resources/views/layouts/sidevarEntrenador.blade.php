@@ -109,16 +109,17 @@
         <nav id="sidebar">
 
             <div id="sidebar-header">
-                <a class="navbar-brand" href="{{ route('Home') }}">
-                    <img id="" src="images/logo-trans-blanco.png" width="200" height="80" class="d-inline-block align-top" alt="">
+                <a class="navbar-brand container-fluid"  href="{{ route('Home') }}">
+                    <img id="" src="../images/logo-trans-blanco.png" width="200" height="80"  class="d-inline-block align-top" alt="">
                     
                 </a>
                 
                 
             </div>
             <ul class="list-unstyled components">
-                <p>datos del loco </p>
-
+                <div class="text-center" style="background-color: #FF6A6A">
+                    <p style="margin-bottom: 5px"><h4> Bienvenido: </h4> {{ auth()->user()->name }} {{ auth()->user()->apellido }} </p>
+                </div>
                 <li class="active">
                     
                    
@@ -127,7 +128,15 @@
                             </li>
                             
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('login') }}">{{ __('Salir') }}</a>
+                                <a class="nav-link" href="{{ route('logout') }}"
+                                onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                        {{ __('Cerrar Sesión') }}
+                                    </a>
+
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                        @csrf
+                                    </form>
                             </li>
                 </li>
                 

@@ -54,7 +54,7 @@ class LoginController extends Controller
 
         foreach ($administradores as $admin => $rut) {
             if (auth()->user()->rut == $rut->rut) {
-                return('/Admin');
+                return('/Miembros/listar');
             }
         }
         foreach ($entrenadores as $trainer => $rut) {

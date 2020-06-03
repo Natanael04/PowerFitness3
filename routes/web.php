@@ -78,7 +78,8 @@ Route::get('/ClienteH', function () {
 });
 Route::view('/Comidas', 'Cliente/Comidas')->name('Comidas');
 Route::view('/Escanear', 'Cliente/Escanear')->name('Escanear');
-Route::view('/Membresia', 'Cliente/Membresia')->name('Membresia');
+//Route::view('/Membresia', 'Cliente/Membresia')->name('Membresia');
+Route::get('/Membresia', 'ClienteControllers\MembresiaController@index')->name('Membresia');
 Route::view('/Rutinas', 'Cliente/Rutinas')->name('Rutinas');
 
 //Rutas Entrenador
