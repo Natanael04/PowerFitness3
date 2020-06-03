@@ -40,7 +40,7 @@
 <div class="container">
   <div class="row">
     <div class="col-sm-5">
-      <div class="card">
+      <div class="card" style="opacity: 1;">
         <div class="card-header">
           <h1 class="text-center">Escanea el QR </h1>
         </div>
@@ -49,7 +49,7 @@
         <div>
           <div style="position: initial;display: inline-block;">
 
-            <div class="video-wrap" >
+            <div class="video-wrap"  >
               <video id="video" playsinline autoplay style="width:400px; height:300px;"></video>
             </div>   
             <div class="scanner-laser laser-rightBottom" style="opacity: 0.5;margin-bottom: 150px;"></div>
