@@ -35,26 +35,46 @@
                         border-right: solid red 5px;    
                 }
         </style>
-         <div style="position: relative;display: inline-block;">
 
-            <div class="video-wrap">
-              <video id="video" playsinline autoplay></video>
-           </div>   
-            <div class="scanner-laser laser-rightBottom" style="opacity: 0.5;"></div>
-            <div class="scanner-laser laser-rightTop" style="opacity: 0.5;"></div>
-            <div class="scanner-laser laser-leftBottom" style="opacity: 0.5;"></div>
-            <div class="scanner-laser laser-leftTop" style="opacity: 0.5;"></div>
+<body class="fondo">
+<div class="container">
+  <div class="row">
+    <div class="col-sm-5">
+      <div class="card">
+        <div class="card-header">
+          <h1 class="text-center">Escanea el QR </h1>
         </div>
+      <div class="card-body">
 
-<h1>pagina del Cliente </h1>
-<!-- Stream video via webcam -->
-<div class="video-wrap">
-    <video id="video" playsinline autoplay></video>
-</div>
+        <div>
+          <div style="position: initial;display: inline-block;">
+
+            <div class="video-wrap" >
+              <video id="video" playsinline autoplay style="width:400px; height:300px;"></video>
+            </div>   
+            <div class="scanner-laser laser-rightBottom" style="opacity: 0.5;margin-bottom: 350px;"></div>
+            <div class="scanner-laser laser-rightTop" style="opacity: 0.5;margin-top: 150px;"></div>
+            <div class="scanner-laser laser-leftBottom" style="opacity: 0.5;margin-bottom: 350px;"></div>
+            <div class="scanner-laser laser-leftTop" style="opacity: 0.5;margin-top: 150px;"></div>
+          </div>
+          
+  <!-- Stream video via webcam -->
+      <div class="video-wrap">
+        <video id="video" playsinline autoplay ></video>
+      </div>
+        </div><br><br>
 
 <!-- Trigger canvas web API -->
-<div class="controller">
-    <button id="snap">Capture</button>
+</div>
+<div class="card-footer">
+  <div class="controller">
+    <button id="snap" class="btn btn-danger">Capturar</button>
+  </div>
+</div>
+
+</div>
+  </div>
+  </div>
 </div>
 
 <!-- Webcam video snapshot -->
@@ -123,4 +143,5 @@ snap.addEventListener("click", function() {
 
 
 </script> 
+</body>
 @endsection

@@ -120,7 +120,7 @@
                 <div class="text-center" style="background-color: #FF6A6A">
                     <p style="margin-bottom: 5px"><h4> Bienvenido: </h4> {{ auth()->user()->name }} {{ auth()->user()->apellido }} </p>
                 </div>
-                <li class="active">
+                                <li class="active">
                     
                    
                             <li class="nav-item">

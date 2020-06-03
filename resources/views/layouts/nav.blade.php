@@ -65,6 +65,7 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('secciones') }}">{{ __('Administar Secciones') }}</a>
                             </li>
+                            
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('logout') }}"
                                 onclick="event.preventDefault();

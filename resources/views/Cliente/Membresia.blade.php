@@ -43,7 +43,7 @@
                             <div class="col-sm-6">
                                 <ul style="font-size: 20px;" class="font-weight-bold">Email:</ul>
                             </div>
-                            <div class="col-sm-5">
+                            <div class="col-sm-6">
                                 <ul style="font-size: 18px;">{{$data->email}}</ul>
                             </div>
                         </div>
