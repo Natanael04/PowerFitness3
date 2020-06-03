@@ -1,6 +1,7 @@
 @extends('layouts.sidevarCliente')
 
 @section('content')
+<body class="fondo">
 <div id="parallax-image">
   <div class="">
     
@@ -59,9 +60,12 @@
     </div>
   </div>
 </div>
+<div class="card-body">
   <div id='calendar'></div>
+
 </div>
-<div id="parallax-image2">
+</div>
+{{-- <div id="parallax-image2">
   <div class="">
     
       <h1 class="titulo">Membresia</h1>
@@ -102,7 +106,7 @@
        </div>
    </section> 
 </div>
-</div>
-
+</div> --}}
+</body>
 
 @endsection

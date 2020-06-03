@@ -3,13 +3,14 @@
 @section('content')
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<body class="fondo">
+<body class="fondo" >
 	
-<div class="container">
+<div class="container" style="display: flex;
+align-items: center;
+justify-content: center;">
     <div class="row">
-        <div class="col-md-6" style="position:relative;
-        left:20%;">
-            <div class="card" style="opacity: 100%">
+        <div class="col-md-12" >
+            <div class="card" style="opacity:1;width:130%;">
                 <div class="card-header">
                     <h4>Información de Membresia.</h4>
                 </div>

@@ -37,9 +37,11 @@
         </style>
 
 <body class="fondo">
-<div class="container">
+<div class="container" style="display: flex;
+align-items: center;
+justify-content: center;">
   <div class="row">
-    <div class="col-sm-5">
+    <div class="col-sm-12">
       <div class="card" style="opacity: 1;">
         <div class="card-header">
           <h1 class="text-center">Escanea el QR </h1>
