@@ -52,33 +52,40 @@
             <div class="video-wrap" >
               <video id="video" playsinline autoplay style="width:400px; height:300px;"></video>
             </div>   
-            <div class="scanner-laser laser-rightBottom" style="opacity: 0.5;margin-bottom: 350px;"></div>
+            <div class="scanner-laser laser-rightBottom" style="opacity: 0.5;margin-bottom: 150px;"></div>
             <div class="scanner-laser laser-rightTop" style="opacity: 0.5;margin-top: 150px;"></div>
-            <div class="scanner-laser laser-leftBottom" style="opacity: 0.5;margin-bottom: 350px;"></div>
+            <div class="scanner-laser laser-leftBottom" style="opacity: 0.5;margin-bottom: 150px;"></div>
             <div class="scanner-laser laser-leftTop" style="opacity: 0.5;margin-top: 150px;"></div>
           </div>
-          
   <!-- Stream video via webcam -->
-      <div class="video-wrap">
+     {{--  <div class="video-wrap">
         <video id="video" playsinline autoplay ></video>
       </div>
-        </div><br><br>
+        </div> --}}
 
 <!-- Trigger canvas web API -->
 </div>
-<div class="card-footer">
+<div class="card-footer text-right">
   <div class="controller">
     <button id="snap" class="btn btn-danger">Capturar</button>
   </div>
 </div>
 
 </div>
-  </div>
-  </div>
-</div>
 
-<!-- Webcam video snapshot -->
-<canvas id="canvas" width="640" height="480"></canvas>
+  </div>
+ {{--  <div class="row">
+    <div class="col-sm-5">
+        </div>
+            <!-- Webcam video snapshot -->
+            <canvas id="canvas" width="400px" height="300px"></canvas>
+          </div>
+
+      </div>
+    </div>
+  </div> --}}
+
+
 <script type="text/javascript" src="https://rawgit.com/schmich/instascan-builds/master/instascan.min.js" ></script> 
 
 <script>
@@ -111,7 +118,7 @@ let scanner = new Instascan.Scanner(
             if(cameras.length > 0){
                 scanner.start(cameras[0]);
             } else {
-                console.error("Não existe câmera no dispositivo!");
+                console.error("No existe cámara en el dispositivo!");
             }
         });
 
