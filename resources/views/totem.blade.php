@@ -29,7 +29,7 @@
 
                     <form>
                         <div class="visible-print text-center">
-                         {!! QrCode::size(250)->backgroundColor(255,55,81)->generate('http://localhost/ClienteH#Membresia')!!}   
+                         {!! QrCode::encoding('UTF-8')->size(250)->backgroundColor(255,55,81)->generate('http://localhost/Membresia')!!}   
                         </div>
                        
                         <div class="form-group mb-3">
