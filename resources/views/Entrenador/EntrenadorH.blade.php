@@ -22,7 +22,19 @@
 
 
 <form action="" method="post">
-                    @csrf
+   id
+        <input type="text" name="txtID" id="txtID">
+        fecha
+        <input type="text" name="txtFecha" id="txtFecha">
+        titulio
+        <input type="text" name="txtTitulo" id="txtTitulo">
+        hora
+        <input type="text" name="txtHora" id="txtHora">
+        descrip
+        <input type="text" name="txtDescription" id="txtDescripction">
+        color
+        <input type="color" name="txtColor" id="txtColor">
+                   {{--  @csrf
           <div class="form-group row">
             <label class="col-sm-4 col-form-label form-control-label">Fecha</label>
             <div class="col-sm-8">
@@ -52,7 +64,7 @@
             <div class="col-sm-8">
               <input class="form-control"type="color" name="txtColor" id="txtColor" required autocomplete="off">
             </div>
-          </div>   
+          </div>    --}}
  </form>  
       </div>
       <div class="modal-footer">

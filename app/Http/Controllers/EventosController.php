@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\evento;
 
 use Illuminate\Http\Request;
 
@@ -14,6 +15,7 @@ class EventosController extends Controller
     public function index()
     {
         //
+        return view("Entrenador.EntrenadorH");
     }
 
     /**
@@ -35,6 +37,10 @@ class EventosController extends Controller
     public function store(Request $request)
     {
         //
+        $datosEvento=request()->except(['_token','_method']);
+        evento::insert($datosEvento);
+        print_r("datosEvento");
+
     }
 
     /**
@@ -46,6 +52,8 @@ class EventosController extends Controller
     public function show($id)
     {
         //
+        $data['eventos']=evento::all();
+        return response()->jason($data['eventos']);
     }
 
     /**

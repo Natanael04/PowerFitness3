@@ -66,14 +66,31 @@
              $('#exampleModal').modal();
              console.log(info);
              calendar.addEvent({ title:"Evento x",date:info.dateStr});
-          }
+          },
+          eventClick:function(info) {
+            console.log(info);
+            console.log(info.event.title);
+            console.log(info.event.start);
+            console.log(info.event.end);
+            console.log(info.event.textColor);
+            console.log(info.event.backgroundColor);
+            console.log(info.event.extendedProps.description);
+            $("#txtID").val(info.event.id);
+            $("#txtTitulo").val(info.event.title);
+            $("#txtFecha").val(info.event.start);
+            $("#txtColor").val(info.event.backgroundColor);
+            $("#txtDescription").val(info.event.extendedProps.description);
+            $('#exampleModal').modal();
+          },  
+          events:"{{ url('/EntrenadorH/show')}}" 
         });
         calendar.setOption('locale','Es');
 
         calendar.render();
         
         $('#btnAgregar').click(function(){
-            recolectarDato("POST");
+            ObjEvento=recolectarDato("POST");
+            enviarInfo('',ObjEvento);
 
         });
 
@@ -91,7 +108,19 @@
                 '_token':$("meta[name='csrf-token']").attr("content"),
                 '_method':method
             }
-            console.log(nuevoEvento);
+             return (nuevoEvento);
+        }
+        function enviarInfo(accion,objEvento){
+          $.ajax(
+          {
+            type:"POST",
+            url:"{{ url('/EntrenadorH') }}"+accion,
+            data:objEvento,
+            succes:function(msg){ console.log(msg);} ,
+            error:function(){ alert("hay un error");}
+
+          }
+          );
         }
       });
 

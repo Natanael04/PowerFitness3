@@ -76,22 +76,19 @@ Route::group(['middleware' => ['permission:eliminar-cliente']], function (){
 Route::get('/ClienteH', function () {
   return view('Cliente/ClienteH');
 });
-Route::view('/Comidas', 'Cliente/Comidas')->name('Comidas');
+
 Route::view('/Escanear', 'Cliente/Escanear')->name('Escanear');
 //Route::view('/Membresia', 'Cliente/Membresia')->name('Membresia');
 Route::get('/Membresia', 'ClienteControllers\MembresiaController@index')->name('Membresia');
 Route::view('/Rutinas', 'Cliente/Rutinas')->name('Rutinas');
 
 //Rutas Entrenador
-Route::get('/EntrenadorH', function () {
-  return view('Entrenador/EntrenadorH');
-});
+Route::get('/EntrenadorH','EventosController@index');
+Route::resource('EntrenadorH', 'EventosController');
+//Route::view('/Agendar', 'Entrenador/Agendar')->name('Agendar');
 
-Route::view('/Agendar', 'Entrenador/Agendar')->name('Agendar');
-Route::view('/CDieta', 'Entrenador/CDieta')->name('CDieta');
-Route::view('/CRutina', 'Entrenador/CRutina')->name('CRutina');
 
-/* hasta aca jajajajja*/
+
 
 
 
