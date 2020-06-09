@@ -3,63 +3,28 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Event;
-class EventosController extends Controller
+
+class ControllerCalendar extends Controller
 {
     //
-   public function form(){
-      return view("Entrenador/agregarEvento");
-    }
+      public function index(){
 
-     public function create(Request $request){
+      $month = date("Y-m");
+      $data = $this->calendar_month($month);
+      $mes = $data['month'];
+      // obtener mes en espanol
+      $mespanish = $this->spanish_month($mes);
+      $mes = $data['month'];
 
-      $this->validate($request, [
-      'titulo'     =>  'required',
-      'descripcion'  =>  'required',
-      'fecha' =>  'required'
-     ]);
-
-      Event::insert([
-        'titulo'       => $request->input("titulo"),
-        'descripcion'  => $request->input("descripcion"),
-        'fecha'        => $request->input("fecha")
+      return view("Calendario",[
+        'data' => $data,
+        'mes' => $mes,
+        'mespanish' => $mespanish
       ]);
 
-      return back()->with('success', 'Enviado exitosamente!');
+  }
 
-    }
-
-    public function details($id){
-
-      $event = Event::find($id);
-
-      return view("Entrenador/detalleEvento",[
-        "event" => $event
-      ]);
-
-    }
-
-    // =================== CALENDARIO =====================
-
-  public function index(){
-
-       $month = date("Y-m");
-       //
-       $data = $this->calendar_month($month);
-       $mes = $data['month'];
-       // obtener mes en espanol
-       $mespanish = $this->spanish_month($mes);
-       $mes = $data['month'];
-
-       return view("Entrenador/EntrenadorH",[
-         'data' => $data,
-         'mes' => $mes,
-         'mespanish' => $mespanish
-       ]);
-
-   }
-
-   public function index_month($month){
+    public function index_month($month){
 
       $data = $this->calendar_month($month);
       $mes = $data['month'];
@@ -67,13 +32,14 @@ class EventosController extends Controller
       $mespanish = $this->spanish_month($mes);
       $mes = $data['month'];
 
-      return view("Entrenador/EntrenadorH",[
+      return view("Calendario",[
         'data' => $data,
         'mes' => $mes,
         'mespanish' => $mespanish
       ]);
 
     }
+
 
     public static function calendar_month($month){
       //$mes = date("Y-m");
@@ -119,8 +85,7 @@ class EventosController extends Controller
             $datanew['dia'] = date("d", strtotime($datafecha));
             $datanew['fecha'] = $datafecha;
             //AGREGAR CONSULTAS EVENTO
-            $datanew['evento'] = Event::where("fecha",$datafecha)->get();
-
+            //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
             array_push($weekdata,$datanew);
           }
           $dataweek['semana'] = $iweek;
@@ -142,6 +107,8 @@ class EventosController extends Controller
       );
       return $data;
     }
+
+
 
     public static function spanish_month($month)
     {
@@ -188,6 +155,4 @@ class EventosController extends Controller
         }
         return $mes;
     }
-
-
 }

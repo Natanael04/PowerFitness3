@@ -20,7 +20,8 @@
         </button>
       </div>
       <div class="modal-body">
-        
+        <form action="">
+            @csrf
           <div class="form-group row">
             <label class="col-sm-4 col-form-label form-control-label">Fecha</label>
             <div class="col-sm-8">

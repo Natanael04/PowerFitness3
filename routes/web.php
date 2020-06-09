@@ -83,13 +83,19 @@ Route::get('/Membresia', 'ClienteControllers\MembresiaController@index')->name('
 Route::view('/Rutinas', 'Cliente/Rutinas')->name('Rutinas');
 
 //Rutas Entrenador
-Route::get('/EntrenadorH','EventosController@index');
-Route::resource('EntrenadorH', 'EventosController');
+//Route::get('/EntrenadorH', function () {
+  //return view('Entrenador/EntrenadorH');
+//});
+//Route::get('/EntrenadorH','EventosController@index');
+
+//Route::resource('EntrenadorH', 'EventosController');
 //Route::view('/Agendar', 'Entrenador/Agendar')->name('Agendar');
+Route::get('/Entrenador/agregarEvento','EventosController@form');
+Route::post('/agregarEvento/create','EventosController@create');
+Route::get('/EntrenadorH','EventosController@index');
+Route::get('/EntrenadorH/index/{month}','EventosController@index_month');
 
-
-
-
+Route::get('/detalleEvento/{id}','ControllerEvent@details');
 
 
 //Testeo rutas

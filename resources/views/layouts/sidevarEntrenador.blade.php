@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+
 <html>
 <head>
     <meta charset="utf-8">
@@ -71,18 +71,22 @@
             console.log(info);
             console.log(info.event.title);
             console.log(info.event.start);
+
             console.log(info.event.end);
             console.log(info.event.textColor);
             console.log(info.event.backgroundColor);
             console.log(info.event.extendedProps.description);
-            $("#txtID").val(info.event.id);
-            $("#txtTitulo").val(info.event.title);
-            $("#txtFecha").val(info.event.start);
-            $("#txtColor").val(info.event.backgroundColor);
-            $("#txtDescription").val(info.event.extendedProps.description);
+            $('#txtID').val(info.event.id);
+            $('#txtTitulo').val(info.event.title);
+
+            $('#txtFecha').val(info.event.start);
+            $('#txtHora').val(info.event.start);
+            $('#txtColor').val(info.event.backgroundColor);
+
+            $('#txtDescription').val(info.event.extendedProps.description)
             $('#exampleModal').modal();
           },  
-          events:"{{ url('/EntrenadorH/show')}}" 
+          events:"{{ url('/EntrenadorH/show') }}" 
         });
         calendar.setOption('locale','Es');
 
@@ -155,6 +159,7 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="#Agendar">{{ __('Agendar') }}</a>
                             </li>
+                          
                             
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('logout') }}"

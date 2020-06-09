@@ -224,7 +224,7 @@ form{
 .lbl-menu #spn1,#spn2,#spn3{
 	position: absolute;
 	content: '';
-	background: ;
+	background: #ff3751;
 	width: 50px;
 	height: 5px;
 	border-radius: 5px;
