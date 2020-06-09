@@ -93,9 +93,9 @@ Route::view('/Rutinas', 'Cliente/Rutinas')->name('Rutinas');
 Route::get('/Entrenador/agregarEvento','EventosController@form');
 Route::post('/agregarEvento/create','EventosController@create');
 Route::get('/EntrenadorH','EventosController@index');
-Route::get('/EntrenadorH/index/{month}','EventosController@index_month');
+Route::get('/EntrenadorH/{month}','EventosController@index_month');
 
-Route::get('/detalleEvento/{id}','ControllerEvent@details');
+Route::get('/detalleEvento/{id}','EventosController@details');
 
 
 //Testeo rutas
