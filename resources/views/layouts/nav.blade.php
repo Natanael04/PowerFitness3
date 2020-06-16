@@ -45,7 +45,7 @@
 
             <div id="sidebar-header">
                 <a class="navbar-brand container-fluid"  href="{{ route('Home') }}">
-                    <img id="" src="../images/logo-trans-blanco.png" width="200" height="80"  class="d-inline-block align-top" alt="">
+                    <img id="" src="/images/logo-trans-blanco.png" width="200" height="80"  class="d-inline-block align-top" alt="">
                     
                 </a>
                 

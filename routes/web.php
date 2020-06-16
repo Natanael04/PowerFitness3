@@ -54,7 +54,7 @@ Route::get('/Membresias/listar', 'AdminControllers\MembresiasController@listar')
 Route::group(['middleware' => ['permission:modificar-cliente']], function (){
   Route::get('/Membresias/{id}/modificar', 'AdminControllers\MembresiasController@editar')->name('membresias.modificar');
   Route::post('/Membresias/{id}/modificar', 'AdminControllers\MembresiasController@actualizar')->name('membresias.actualizar');
-});//modificar un miembro
+});//modificar una membresia
 
 Route::get('/Secciones/listar', 'AdminControllers\SeccionesController@listar')->name('secciones');
 
@@ -92,9 +92,15 @@ Route::view('/Rutinas', 'Cliente/Rutinas')->name('Rutinas');
 //Route::view('/Agendar', 'Entrenador/Agendar')->name('Agendar');
 Route::get('/Entrenador/agregarEvento','EventosController@form');
 Route::post('/agregarEvento/create','EventosController@create');
-Route::get('/EntrenadorH','EventosController@index');
+Route::get('/EntrenadorH','EventosController@index')->name('EntrenadorMenu');
 Route::get('/EntrenadorH/{month}','EventosController@index_month');
-
+Route::group(['middleware' => ['permission:leer-info-entrenador']], function (){
+  Route::get('/Entrenador/{id}/modificar', 'EventosController@editar')->name('evento.modificar');
+  Route::post('/Entrenador/{id}/modificar', 'EventosController@actualizar')->name('evento.actualizar');
+});
+Route::group(['middleware' => ['permission:leer-info-entrenador']], function (){
+  Route::get('/Entrenador/{id}/eliminar', 'EventosController@eliminar')->name('evento.eliminar');
+});
 Route::get('/detalleEvento/{id}','EventosController@details');
 
 

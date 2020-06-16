@@ -142,8 +142,8 @@
         <nav id="sidebar">
 
             <div id="sidebar-header">
-                <a class="navbar-brand container-fluid"  href="{{ route('Home') }}">
-                    <img id="" src="../images/logo-trans-blanco.png" width="200" height="80"  class="d-inline-block align-top" alt="">
+                <a class="navbar-brand container-fluid"  href="{{-- {{ route('Home') }} --}}">
+                    <img id="" src="/images/logo-trans-blanco.png" width="200" height="80"  class="d-inline-block align-top" alt="">
                     
                 </a>
                 
@@ -157,7 +157,7 @@
                     
                    
                             <li class="nav-item">
-                                <a class="nav-link" href="#Agendar">{{ __('Agendar') }}</a>
+                                <a class="nav-link" href="{{ route('EntrenadorMenu') }}">{{ __('Calendario') }}</a>
                             </li>
                           
                             

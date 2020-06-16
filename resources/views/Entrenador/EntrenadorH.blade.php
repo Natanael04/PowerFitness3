@@ -31,40 +31,22 @@
 
      
     <!-- Modal -->
-    <div class="modal fade" id="evento" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            ...
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">Save changes</button>
-          </div>
-        </div>
-      </div>
-    </div>
-  <body>
+    
+  <body class="fondo">
 
 
 
 
 
-    <div class="container">
+    <div class="container rounded" style="background-color:white;">
       
       
-      <a class="btn btn-default"  href="{{ asset('/Entrenador/agregarEvento') }}">Crear un evento</a>
+      <a class="btn btn-default" style="background-color: #ff3751;color:white; margin-top:2%"  href="{{ asset('/Entrenador/agregarEvento') }}">Crear un evento</a>
 
 
       <hr>
 
-      <div class="row header-calendar"  >
+      <div class="row header-calendar"  style="background-color: #ff3751;"  >
 
         <div class="col" style="display: flex; justify-content: space-between; padding: 10px;">
           <a  href="{{ asset('/EntrenadorH/') }}/<?= $data['last']; ?>" style="margin:10px;">
@@ -97,9 +79,55 @@
               {{ $dayweek['dia']  }}
               <!-- evento -->
               @foreach  ($dayweek['evento'] as $event) 
-                  <a class="badge badge-primary" href="{{ asset('/detalleEvento/') }}/{{ $event->id }}">
+                  <a class="badge badge-primary" href="#evento-{{$event->id}}" data-toggle="modal">
                     {{ $event->titulo }}
                   </a>
+                  <div class="modal fade" id="evento-{{$event->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title" id="exampleModalLabel">{{ $event->titulo }}</h5>
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
+                        <div class="modal-body">
+                          <div class="row">
+                            <div class="col-sm-6">
+                                <ul  class="font-weight-bold">Descripción:</ul>
+                            </div>
+                            <div class="col-sm-5">
+                                <ul >{{$event->descripcion}}</ul>
+                            </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-sm-6">
+                              <ul  class="font-weight-bold">Fecha:</ul>
+                          </div>
+                          <div class="col-sm-5">
+                              <ul >{{$event->fecha}}</ul>
+                          </div>
+                      </div>
+                        </div>
+                        <div class="modal-footer">
+                            <div class="col text-left">
+                              @can('leer-info-entrenador')
+                                <a class="btn btn-danger" href="{{ route('evento.eliminar', $event->id)}}"><i class="fas fa-trash"></i></a>
+                              @else
+                              *
+                              @endcan
+                            </div>
+                            <div class="col text-right">
+                              @can('leer-info-entrenador')
+                                <a class="btn btn-warning" href="{{ route('evento.modificar', $event->id)}}"><i class="fas fa-edit"></i></a>
+                              @else
+                              *
+                              @endcan
+                            </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
               @endforeach
             </div>
           @else
@@ -111,9 +139,9 @@
           @endforeach
         </div>
       @endforeach
-
     </div>
-    
+    </div>
+  </body>
 
 
 @endsection

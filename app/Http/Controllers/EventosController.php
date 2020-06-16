@@ -25,9 +25,58 @@ class EventosController extends Controller
         'fecha'        => $request->input("fecha")
       ]);
 
-      return back()->with('success', 'Enviado exitosamente!');
+      return redirect('/EntrenadorH');
 
     }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function editar($id)
+    {
+        $event = Event::findOrFail($id);
+
+        return view('Entrenador.ModificarEvento', compact('event'));
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function actualizar(Request $request, $id)
+    {
+        $event = Event::findOrFail($id);
+
+        $event->titulo = $request->titulo;
+        $event->descripcion = $request->descripcion;
+        $event->fecha = $request->fecha;
+
+        $event->save();
+
+        return redirect('/EntrenadorH');
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function eliminar($id)
+    {
+
+        $event = Event::findOrFail($id);
+
+        Event::findOrFail($id)->delete();
+        return redirect()->back();
+    }
+
 
     public function details($id){
 
