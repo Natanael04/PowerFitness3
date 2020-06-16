@@ -81,8 +81,10 @@ Route::view('/Escanear', 'Cliente/Escanear')->name('Escanear');
 //Route::view('/Membresia', 'Cliente/Membresia')->name('Membresia');
 Route::get('/Membresia', 'ClienteControllers\MembresiaController@index')->name('Membresia');
 Route::view('/Rutinas', 'Cliente/Rutinas')->name('Rutinas');
-
+Route::get('/ClienteH','ControllerCalendar@index');
+Route::get('/ClienteH/{month}','ControllerCalendar@index_month');
 //Rutas Entrenador
+
 //Route::get('/EntrenadorH', function () {
   //return view('Entrenador/EntrenadorH');
 //});

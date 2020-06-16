@@ -105,6 +105,7 @@ class EventosController extends Controller
          'mes' => $mes,
          'mespanish' => $mespanish
        ]);
+       
 
    }
 

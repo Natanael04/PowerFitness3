@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Event;
 class ControllerCalendar extends Controller
 {
     //
@@ -16,7 +16,7 @@ class ControllerCalendar extends Controller
       $mespanish = $this->spanish_month($mes);
       $mes = $data['month'];
 
-      return view("Calendario",[
+      return view("Cliente/ClienteH",[
         'data' => $data,
         'mes' => $mes,
         'mespanish' => $mespanish
@@ -32,7 +32,7 @@ class ControllerCalendar extends Controller
       $mespanish = $this->spanish_month($mes);
       $mes = $data['month'];
 
-      return view("Calendario",[
+      return view("Cliente/ClienteH",[
         'data' => $data,
         'mes' => $mes,
         'mespanish' => $mespanish
