@@ -27,13 +27,7 @@
       background-color: #ccd1ce;
     }
     </style>
-<div id="parallax-image">
-  <div class="">
-    
-      <h1 class="titulo">Horario</h1>
-    
-  </div>
-</div>
+
 
   <div class="container rounded" style="background-color:white;">
       
