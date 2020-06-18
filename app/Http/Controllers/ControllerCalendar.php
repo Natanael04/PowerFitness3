@@ -7,6 +7,17 @@ use App\Event;
 class ControllerCalendar extends Controller
 {
     //
+
+
+    public function details($id){
+
+      $event = Event::find($id);
+
+      return view("Cliente/ClienteH",[
+        "event" => $event
+      ]);
+
+    }
       public function index(){
 
       $month = date("Y-m");
