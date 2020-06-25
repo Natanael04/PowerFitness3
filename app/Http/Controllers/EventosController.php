@@ -4,11 +4,17 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Event;
+use App\User;
+use Spatie\Permission\Models\Role;
+use Spatie\Permission\Traits\HasRoles;
+
 class EventosController extends Controller
 {
     //
    public function form(){
-      return view("Entrenador/agregarEvento");
+      $miembros = User::all();
+
+      return view("Entrenador/agregarEvento", compact('miembros'));
     }
 
      public function create(Request $request){
@@ -20,6 +26,8 @@ class EventosController extends Controller
      ]);
 
       Event::insert([
+        'rutEntrenador'=> auth()->user()->rut,
+        'rutCliente'   => $request->rutCliente,
         'titulo'       => $request->input("titulo"),
         'descripcion'  => $request->input("descripcion"),
         'fecha'        => $request->input("fecha")
@@ -169,7 +177,21 @@ class EventosController extends Controller
             $datanew['dia'] = date("d", strtotime($datafecha));
             $datanew['fecha'] = $datafecha;
             //AGREGAR CONSULTAS EVENTO
-            $datanew['evento'] = Event::where("fecha",$datafecha)->get();
+
+            $administradores = User::whereHas("roles", function($q){ $q->where("name", "Administrador"); })
+            ->select('rut')
+            ->get();
+            foreach ($administradores as $admin => $rut) {
+              if (auth()->user()->rut == $rut->rut) {
+                $datanew['evento'] = Event::where("fecha",$datafecha)->get();
+              }
+              else{
+                $datanew['evento'] = Event::where("fecha",$datafecha)
+                ->where("rutEntrenador", auth()->user()->rut )
+                ->get();
+              }
+          }
+            
 
             array_push($weekdata,$datanew);
           }

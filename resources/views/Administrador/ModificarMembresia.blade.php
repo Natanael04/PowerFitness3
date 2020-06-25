@@ -52,7 +52,9 @@
                             $(function() {
                                 if ($('#varEstado').val() == 1) {
                                     $('#estado').bootstrapToggle('on');
-                                }
+                                }else{
+									$('#estado').bootstrapToggle('off')
+								}
                                 
                             })
                         </script>

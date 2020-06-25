@@ -15,7 +15,8 @@ class CreateEventoTable extends Migration
     {
         Schema::create('evento', function (Blueprint $table) {
             $table->bigIncrements('id');
-            //$table->string('rut')->unique();
+            $table->string('rutEntrenador');
+            $table->string('rutCliente');
             $table->string('titulo');
             $table->string('descripcion');
     

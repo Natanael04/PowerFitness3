@@ -27,7 +27,6 @@ class MembresiasActualizarRequest extends FormRequest
             'precio' => 'max:5|required',
             'fechaInicio' => 'required',
             'fechaTermino' => 'required',
-            'estado' => 'required',
         ];
     }
 }

@@ -1,6 +1,8 @@
 @extends('layouts.sidevarEntrenador')
 
 @section('content')
+<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" />
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
 <body class="fondo">
 
   <div class="container" style="display: flex;
@@ -40,13 +42,13 @@
             <div class="form-group row">
               <label class="col-lg-4 col-form-label form-control-label">Titulo</label>
               <div class="col-lg-8">
-                <input class="form-control" type="text" id="titulo" name="titulo" required>
+                <input class="form-control" type="text" id="titulo" name="titulo" required autocomplete="off">
               </div>
             </div>
             <div class="form-group row">
               <label class="col-lg-4 col-form-label form-control-label">Descripción</label>
               <div class="col-lg-8">
-                <input class="form-control" type="text" id="descripcion" name="descripcion" required>
+                <input class="form-control" type="text" id="descripcion" name="descripcion" required autocomplete="off">
               </div>
             </div>
             <div class="form-group row">
@@ -55,9 +57,23 @@
                 <input class="form-control" type="date" id="fecha" name="fecha" required>
               </div>
             </div>
-            
-  {{-- 					<script src="/js/validarRUT.js"></script>
-   --}}                
+            <div class="form-group row">
+              <label class="col-lg-4 col-form-label form-control-label">Cliente</label>
+              <div class="col-lg-8">
+                <select class="form-control" id="rutCliente" name="rutCliente">
+                  <option value="" selected disabled>Seleccione Cliente</option>
+                  @foreach ($miembros as $miembro)
+                  <option value="{{ $miembro->rut }}">{{ $miembro->name }} {{ $miembro->apellido }}</option>
+                  @endforeach
+                  
+                </select>
+              </div>
+            </div>
+  				  <script>
+              $(document).ready(function() {
+                $('#rutCliente').select2();
+              });
+            </script>
         </div>
       <div class="card-footer text-right">
             <input type="submit" class="btn btn-danger" value="Guardar">

@@ -95,18 +95,18 @@ class MembresiasController extends Controller
         $membresia->precio = $request->precio;
         $membresia->fechaInicio = $request->fechaInicio;
         $membresia->fechaTermino = $request->fechaTermino;
-        
+        $membresia->estado = $request->estado;
+
         if ($membresia->estado == 'on') {
             $membresia->estado = 1;
-        } else {
-            if ($membresia->estado == 'off') {
-                $membresia->estado = 0;
-            }
+        }
+
+        if ($membresia->estado == null) {
+            $membresia->estado = 0;
         }
         
-
-        //$membresia->estado = $request->estado;
-
+/*         dd($membresia);
+ */
         $membresia->save();
 
         return redirect('/Membresias/listar');

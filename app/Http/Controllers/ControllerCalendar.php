@@ -96,7 +96,9 @@ class ControllerCalendar extends Controller
             $datanew['dia'] = date("d", strtotime($datafecha));
             $datanew['fecha'] = $datafecha;
             //AGREGAR CONSULTAS EVENTO
-             $datanew['evento'] = Event::where("fecha",$datafecha)->get();
+             $datanew['evento'] = Event::where("fecha",$datafecha)
+                                              ->where("rutCliente", auth()->user()->rut )
+                                              ->get();
 
             //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
             array_push($weekdata,$datanew);
