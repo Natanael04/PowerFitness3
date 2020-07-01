@@ -120,7 +120,7 @@ let scanner = new Instascan.Scanner(
         Instascan.Camera.getCameras().then(cameras => 
         {
             if(cameras.length > 0){
-                scanner.start(cameras[0]);
+                scanner.start(cameras[1]);
             } else {
                 console.error("No existe cámara en el dispositivo!");
             }
