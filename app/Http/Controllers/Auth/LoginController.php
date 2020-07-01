@@ -45,28 +45,33 @@ class LoginController extends Controller
         $administradores = User::whereHas("roles", function($q){ $q->where("name", "Administrador"); })
         ->select('rut')
         ->get();
-        $entrenadores = User::whereHas("roles", function($q){ $q->where("name", "Entrenador"); })
-        ->select('rut')
-        ->get();
-        $clientes = User::whereHas("roles", function($q){ $q->where("name", "cliente"); })
-        ->select('rut')
-        ->get();
 
         foreach ($administradores as $admin => $rut) {
             if (auth()->user()->rut == $rut->rut) {
                 return('/Miembros/listar');
             }
         }
+
+        $entrenadores = User::whereHas("roles", function($q){ $q->where("name", "Entrenador"); })
+        ->select('rut')
+        ->get();
+
         foreach ($entrenadores as $trainer => $rut) {
             if (auth()->user()->rut == $rut->rut) {
                 return('/EntrenadorH');
             }
         }
+
+        $clientes = User::whereHas("roles", function($q){ $q->where("name", "cliente"); })
+        ->select('rut')
+        ->get();
+
         foreach ($clientes as $cliente => $rut) {
             if (auth()->user()->rut == $rut->rut) {
                 return('/ClienteH');
             }
         }
+        
         return('/Login');
     }
     
