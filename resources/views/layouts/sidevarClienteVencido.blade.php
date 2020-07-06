@@ -81,6 +81,7 @@
             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                 @csrf
             </form>
+            
         </div>
             <ul class="list-unstyled components">
               <div class="text-center" style="background-color: #FF6A6A">
@@ -88,15 +89,6 @@
             </div>
                 <li class="active">
                     
-                   
-                            
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('Escanear') }}">{{ __('Escanear') }}</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('Membresia') }}">{{ __('Membresia') }}</a>
-                            </li>
-                            
                             <li class="nav-item">
                               <a class="nav-link" href="{{ route('logout') }}"
                               onclick="event.preventDefault();

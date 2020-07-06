@@ -11,8 +11,8 @@
 |
 */
 
-URL::forceScheme('https');
-Route::view('/','Home')->name('Home');/*esta te lleva al inicio*/
+/* URL::forceScheme('https');
+ */Route::view('/','Home')->name('Home');/*esta te lleva al inicio*/
 
 /*estas rutas agregue shoo*/
 
@@ -80,6 +80,7 @@ Route::get('/ClienteH', function () {
 Route::view('/Escanear', 'Cliente/Escanear')->name('Escanear');
 //Route::view('/Membresia', 'Cliente/Membresia')->name('Membresia');
 Route::get('/Membresia', 'ClienteControllers\MembresiaController@index')->name('Membresia');
+Route::get('/MembresiaVenc', 'ClienteControllers\MembresiaController@listaVencida')->name('MembresiaVenc');
 //Route::view('/Rutinas', 'Cliente/Rutinas')->name('Rutinas');
 Route::get('/ClienteH/','ControllerCalendar@index');
 Route::get('/ClienteH/{month}','ControllerCalendar@index_month');

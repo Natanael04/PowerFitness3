@@ -24,7 +24,13 @@
                 <div class="container align-self-center p-6">
                     <h1 class="font-weight-bold mb-3">PowerFitness</h1>
                     <p class="text-muted mb-5">Ingresa tu RUT y Contraseña</p>
-
+                    {{-- @if (\Session::has('errorMem'))
+                        <div class="alert alert-success">
+                            <ul>
+                                <li>{!! \Session::get('errorMem') !!}</li>
+                            </ul>
+                        </div>
+                    @endif --}}
                     <form method="POST" action="{{ route('login') }}">
                         @csrf
                         <div class="form-group mb-3 {{ $errors->has('rut') ? 'has-error' : '' }}">
@@ -45,6 +51,9 @@
                         <button type="submit" class=" btn1 btn-outline-dark d-inline-block text-light mr-2 mb-3 width-100">Ingresar</button>
                         <script src="/js/validarRUT.js"></script>
                     </form>
+                    {{-- @if ( $errorMem->any())
+                        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+                    @endif --}}
                     <small class="d-inline-block text-muted mt-5">Todos los derechos reservados | © 2020 PowerFitness</small>
                 </div>
            </div>

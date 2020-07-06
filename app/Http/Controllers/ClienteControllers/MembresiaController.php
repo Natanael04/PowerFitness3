@@ -29,7 +29,20 @@ class MembresiaController extends Controller
 
         return view('/Cliente/Membresia', compact('miembro'));
     }
+    public function listaVencida()
+    {
+        $miembro = User::with('membresias')
+        ->join('membresias', 'membresias.user_id', '=', 'users.id')
+        ->select('users.id', 'users.rut', 'users.name', 'users.apellido', 'users.email', 
+                 'membresias.precio', 'membresias.id as membresias_id',
+                 'membresias.fechaInicio', 'membresias.fechaTermino', 'membresias.estado'
+                 )
+        ->where('users.id', '=', auth()->user()->id)
+        ->get();
 
+
+        return view('/Cliente/MembresiaVencida', compact('miembro'));
+    }
     /**
      * Show the form for creating a new resource.
      *

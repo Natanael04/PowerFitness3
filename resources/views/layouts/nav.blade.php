@@ -44,12 +44,14 @@
         <nav  id="sidebar">
 
             <div id="sidebar-header">
-                <a class="navbar-brand container-fluid"  href="{{ route('Home') }}">
+                    <a class="navbar-brand container-fluid"  href="{{ route('logout') }}" onclick="event.preventDefault();
+                document.getElementById('logout-form').submit();">
                     <img id="" src="/images/logo-trans-blanco.png" width="200" height="80"  class="d-inline-block align-top" alt="">
                     
                 </a>
-                
-                
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                    @csrf
+                </form>
             </div>
             <ul class="list-unstyled components">
                 <div class="text-center" style="background-color: #FF6A6A">

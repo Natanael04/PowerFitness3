@@ -30,7 +30,7 @@
 </head>
 
 <body id="mainBox" class="creamBg" data-spy="scroll" data-target="#bs-example-navbar-collapse-1" data-offset="150">
-
+    @csrf
     
     <div id="site-head">
 

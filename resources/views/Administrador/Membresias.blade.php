@@ -26,7 +26,8 @@
 									<th class="text-center" scope="col">Coste</th>
 									<th class="text-center" scope="col">Fecha Inicio</th>
 									<th class="text-center" scope="col">Fecha Vencimiento</th>
-                                    <th class="text-center" scope="col">Rut asociado</th>
+									<th class="text-center" scope="col">Rut asociado</th>
+									<th class="text-center" scope="col">Miembro</th>
                                     <th class="text-center" scope="col">Estado</th>
                                     <th class="text-center" scope="col">Acción</th>
 								</tr>
@@ -51,6 +52,7 @@
                                         <td class="text-center">{{ $membresia->fechaTermino }}</td>
                                     @endif
 									<td class="text-center">{{ $membresia->rut }}</td>
+									<td class="text-center">{{ $membresia->name }} {{ $membresia->apellido }}</td>
                                     @if ($membresia->estado  == 1)
                                         <td class="text-center">Activa</td>
                                     @else

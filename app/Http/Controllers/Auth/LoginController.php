@@ -5,8 +5,10 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use App\User;
+use App\Membresia;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Traits\HasRoles;
+use Illuminate\Support\Facades\Redirect;
 
 class LoginController extends Controller
 {
@@ -42,35 +44,58 @@ class LoginController extends Controller
 
     public function redirectPath(){
 
-        $administradores = User::whereHas("roles", function($q){ $q->where("name", "Administrador"); })
-        ->select('rut')
+                $administradores = User::whereHas("roles", function($q){ $q->where("name", "Administrador"); })
+                ->select('rut')
+                ->get();
+
+                foreach ($administradores as $admin => $rut) {
+                    if (auth()->user()->rut == $rut->rut) {
+                        return('/Miembros/listar');
+                    }
+                }
+
+                $entrenadores = User::whereHas("roles", function($q){ $q->where("name", "Entrenador"); })
+                ->select('rut')
+                ->get();
+
+                foreach ($entrenadores as $trainer => $rut) {
+                    if (auth()->user()->rut == $rut->rut) {
+                        return('/EntrenadorH');
+                    }
+                }
+
+        $membresiasVenc = Membresia::with('users')
+        ->join('users', 'users.id', '=', 'membresias.user_id')
+        ->select('users.id as user_id', 'users.rut', 'users.name', 'users.apellido', 
+                 'membresias.precio', 'membresias.id',
+                 'membresias.fechaInicio', 'membresias.fechaTermino' ,'membresias.estado'
+                 )
+        ->where('estado', '=', 0)
         ->get();
 
-        foreach ($administradores as $admin => $rut) {
+        foreach ($membresiasVenc as $memVenc => $rut) {
             if (auth()->user()->rut == $rut->rut) {
-                return('/Miembros/listar');
+                /* auth()->logout(); */
+/*                 return redirect()->back()->with('errorMem', 'your message,here');
+ */            
+                return('/MembresiaVenc');
             }
         }
+                
 
-        $entrenadores = User::whereHas("roles", function($q){ $q->where("name", "Entrenador"); })
-        ->select('rut')
-        ->get();
+                $clientes = User::whereHas("roles", function($q){ $q->where("name", "cliente"); })
+                ->select('rut')
+                ->get();
 
-        foreach ($entrenadores as $trainer => $rut) {
-            if (auth()->user()->rut == $rut->rut) {
-                return('/EntrenadorH');
-            }
-        }
+                foreach ($clientes as $cliente => $rut) {
+                    if (auth()->user()->rut == $rut->rut) {
+                        return('/ClienteH');
+                    }
+                }
+            
+        
 
-        $clientes = User::whereHas("roles", function($q){ $q->where("name", "cliente"); })
-        ->select('rut')
-        ->get();
-
-        foreach ($clientes as $cliente => $rut) {
-            if (auth()->user()->rut == $rut->rut) {
-                return('/ClienteH');
-            }
-        }
+        
         
         return('/Login');
     }
