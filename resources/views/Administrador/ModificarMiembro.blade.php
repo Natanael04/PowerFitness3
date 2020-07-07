@@ -55,9 +55,14 @@
 						</div>
 					</div>
 					<div class="form-group row">
-						<label class="col-lg-4 col-form-label form-control-label">Contraseña</label>
-						<div class="col-lg-8">
-							<input class="form-control" type="password" id="password" name="password" required >
+						<label class="col-sm-4 col-form-label form-control-label">Contraseña</label>
+						<div class="col-sm-8">
+						 <div class="input-group">
+							<input class="form-control" type="password" id="password" name="password"  required autocomplete="off">
+							<div class="input-group-append">
+                             <button id="show_password" class="btn btn-primary" type="button" onclick="mostrarPassword()"> <span class="fa fa-eye-slash icon"></span> </button>
+                            </div>
+						 </div>
 						</div>
 					</div>
 					<div class="form-group row">
