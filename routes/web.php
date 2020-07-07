@@ -11,8 +11,8 @@
 |
 */
 
- URL::forceScheme('https');
- Route::view('/','Home')->name('Home');/*esta te lleva al inicio*/
+/*  URL::forceScheme('https');
+ */ Route::view('/','Home')->name('Home');/*esta te lleva al inicio*/
 
 /*estas rutas agregue shoo*/
 
