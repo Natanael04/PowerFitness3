@@ -29,7 +29,7 @@
 
                     <form>
                         <div class="visible-print text-center">
-                         {!! QrCode::encoding('UTF-8')->size(250)->backgroundColor(255,55,81)->generate('https://powerfitness2.com/Membresia')!!}   
+                         {!! QrCode::encoding('UTF-8')->size(250)->backgroundColor(255,55,81)->generate('https://www.powerfitness2.com/Membresia')!!}   
                         </div>
                        
                         <div class="form-group mb-3">
