@@ -23,8 +23,7 @@ class MembresiaController extends Controller
                  'membresias.precio', 'membresias.id as membresias_id',
                  'membresias.fechaInicio', 'membresias.fechaTermino', 'membresias.estado'
                  )
-        ->where('users.id', auth()->user()->id)
-        ->get();
+        ->where('users.id', auth()->user()->id);
 
 
         return view('/Cliente/Membresia', compact('miembro'));
