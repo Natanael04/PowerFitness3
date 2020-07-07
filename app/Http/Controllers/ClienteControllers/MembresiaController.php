@@ -26,7 +26,8 @@ class MembresiaController extends Controller
         ->where('users.id', auth()->user()->id);
 
 
-        return view('/Cliente/Membresia', compact('miembro'));
+        //return view('/Cliente/Membresia', compact('miembro'));
+        return $miembro;
     }
     public function listaVencida()
     {
