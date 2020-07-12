@@ -78,45 +78,6 @@
 		</div>
 	</div>
 </div>
-{{-- @foreach($miembros as $miembro)
-<div class="container">
-	<div class="modal fade" id="miembroModal-{{$miembro->id}}" tabindex="-1" role="dialog">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h4 class="col-sm-10 modal-tittle">Detalle Usuario: {{$miembro->name}}</h4>
-					<button tyle="button" class="col-sm-2 close" data-dismiss="modal" aria-hidden="true">&times;</button>
-				</div>
-				<div class="modal-body">
-					<div class="row ml-4">
-						<div class="col-sm-6">
-							<p class="font-weight-bold">Rut:</p>
-							<p class="font-weight-bold">Nombre:</p>
-							<p class="font-weight-bold">Apellido:</p>
-							<p class="font-weight-bold">Email:</p>
-							<p class="font-weight-bold">Tipo Usuario:</p>
-							<p class="font-weight-bold">Costo Membresia:</p>
-							<p class="font-weight-bold">Fecha Inicio:</p>
-							<p class="font-weight-bold">Fecha Vencimiento:</p>
-						</div>
-						<div class="col-sm-6">
-							<p>{{$miembro->rut}}</p>
-							<p>{{$miembro->name}}</p>
-							<p>{{$miembro->apellido}}</p>
-							<p>{{$miembro->email}}</p>
-							<p>{{$miembro->roles->implode('name', ', ') }}</p>
-							<p>{{$miembro->precio}}</p>
-							<p>{{$miembro->fechaInicio}}</p>
-							<p>{{$miembro->fechaTermino}}</p>
 
-						</div>
-					</div>
-					
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
-@endforeach --}}
 </body>
 @endsection

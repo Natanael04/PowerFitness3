@@ -59,11 +59,7 @@ justify-content: center;">
             <div class="scanner-laser laser-leftBottom" style="opacity: 0.5;margin-bottom: 150px;"></div>
             <div class="scanner-laser laser-leftTop" style="opacity: 0.5;margin-top: 150px;"></div>
           </div>
-  <!-- Stream video via webcam -->
-     {{--  <div class="video-wrap">
-        <video id="video" playsinline autoplay ></video>
-      </div>
-        </div> --}}
+  
 
 <!-- Trigger canvas web API -->
 </div>
@@ -78,16 +74,7 @@ justify-content: center;">
   </div>
   </div>
 </div>
- {{--  <div class="row">
-    <div class="col-sm-5">
-        </div>
-            <!-- Webcam video snapshot -->
-            <canvas id="canvas" width="400px" height="300px"></canvas>
-          </div>
 
-      </div>
-    </div>
-  </div> --}}
 
 
 <script type="text/javascript" src="https://rawgit.com/schmich/instascan-builds/master/instascan.min.js" ></script> 
@@ -120,7 +107,7 @@ let scanner = new Instascan.Scanner(
         Instascan.Camera.getCameras().then(cameras => 
         {
             if(cameras.length > 0){
-                scanner.start(cameras[0]);
+                scanner.start(cameras[1]);
             } else {
                 console.error("No existe cámara en el dispositivo!");
             }

@@ -25,43 +25,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link type="text/css" rel="stylesheet" href="/css/estilo.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-     <!-- Fullcalendar estilos-->
-    <link href='fullcalendar/core/main.css' rel='stylesheet' />
-    <link href='fullcalendar/daygrid/main.css' rel='stylesheet' />
-    <link href='fullcalendar/timegrid/main.css' rel='stylesheet' />
-    <link href='fullcalendar/list/main.css' rel='stylesheet' />
-   <!-- Fullcalendar plugins-->
-    <script src='fullcalendar/core/main.js'></script>
-    <script src='fullcalendar/daygrid/main.js'></script>
-    <script src='fullcalendar/timegrid/main.js'></script>
-    <script src='fullcalendar/list/main.js'></script>
-    <script src='fullcalendar/interaction/main.js'></script>
-    <script>
-
-      document.addEventListener('DOMContentLoaded', function() {
-        var calendarEl = document.getElementById('calendar');
-
-        var calendar = new FullCalendar.Calendar(calendarEl, {
-
-
-          plugins: [ 'dayGrid', 'interaction' , 'timeGrid', 'list' ],
-
-          header:{
-            left:'prev,next today',
-            center:'title',
-            right:'dayGridMonth,timeGridWeek,timeGridDay'
-          },
-          dateClick:function(info){
-             $('#exampleModal').modal();
-             calendar.addEvent({});
-          }
-        });
-        calendar.setOption('locale','Es');
-
-        calendar.render();
-      });
-
-    </script>
+     
     
 </head>
 

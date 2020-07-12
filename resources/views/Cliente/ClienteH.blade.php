@@ -100,20 +100,7 @@
                       </div>
                         </div>
                         <div class="modal-footer">
-                           {{--  <div class="col text-left">
-                              @can('leer-info-entrenador')
-                                <a class="btn btn-danger" href="{{ route('evento.eliminar', $event->id)}}"><i class="fas fa-trash"></i></a>
-                              @else
-                              *
-                              @endcan
-                            </div>
-                            <div class="col text-right">
-                              @can('leer-info-entrenador')
-                                <a class="btn btn-warning" href="{{ route('evento.modificar', $event->id)}}"><i class="fas fa-edit"></i></a>
-                              @else
-                              *
-                              @endcan
-                            </div> --}}
+                           
                         </div>
                       </div>
                     </div>

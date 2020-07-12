@@ -14,13 +14,12 @@
  URL::forceScheme('https');
  Route::view('/','Home')->name('Home');/*esta te lleva al inicio*/
 
-/*estas rutas agregue shoo*/
 
 Route::get('/login', function () {
   return view('auth/login');
 });
 
-//Route::post('/login', 'Auth\LoginController@login')->name('login');
+
 
 Route::get('/totem', function () {
   return view('/totem');
@@ -86,15 +85,7 @@ Route::get('/ClienteH/','ControllerCalendar@index');
 Route::get('/ClienteH/{month}','ControllerCalendar@index_month');
 Route::get('/ClienteH/{id}','ControllerCalendar@details');
 
-//Rutas Entrenador
 
-//Route::get('/EntrenadorH', function () {
-  //return view('Entrenador/EntrenadorH');
-//});
-//Route::get('/EntrenadorH','EventosController@index');
-
-//Route::resource('EntrenadorH', 'EventosController');
-//Route::view('/Agendar', 'Entrenador/Agendar')->name('Agendar');
 Route::get('/Entrenador/agregarEvento','EventosController@form');
 Route::post('/agregarEvento/create','EventosController@create');
 Route::get('/EntrenadorH','EventosController@index')->name('EntrenadorMenu');

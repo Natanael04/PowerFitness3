@@ -73,9 +73,5 @@
 </div>
 </body>
 </html>
-{{-- $('#estado').bootstrapToggle({
-                                
-    on: '1',
-    off: '0'
-  }); --}}
+
 @endsection

@@ -33,12 +33,7 @@
        @endif
   <form action="{{ asset('/agregarEvento/create/') }}" method="post">
                       @csrf
-            {{-- <div class="form-group row">
-              <label class="col-lg-4 col-form-label form-control-label">Rut</label>
-              <div class="col-lg-8">
-                          <input class="form-control" type="text" id="rut" name="rut" oninput="checkRut(this)" required maxlength="10" value="{{$miembro->rut}}">
-              </div>
-            </div> --}}
+            
             <div class="form-group row">
               <label class="col-lg-4 col-form-label form-control-label">Titulo</label>
               <div class="col-lg-8">
